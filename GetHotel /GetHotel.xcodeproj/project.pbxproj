@@ -52,6 +52,7 @@
 		B29D479B1F4FB501003499C4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D479A1F4FB501003499C4 /* SettingViewController.m */; };
 		B29D479E1F4FB54B003499C4 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D479D1F4FB54B003499C4 /* ProtocolViewController.m */; };
 		B29D47A11F4FB58D003499C4 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47A01F4FB58D003499C4 /* ServiceViewController.m */; };
+		B29D47A51F5016A3003499C4 /* MyinfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47A41F5016A3003499C4 /* MyinfoTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,8 @@
 		B29D479D1F4FB54B003499C4 /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
 		B29D479F1F4FB58D003499C4 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		B29D47A01F4FB58D003499C4 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
+		B29D47A31F5016A3003499C4 /* MyinfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyinfoTableViewCell.h; sourceTree = "<group>"; };
+		B29D47A41F5016A3003499C4 /* MyinfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyinfoTableViewCell.m; sourceTree = "<group>"; };
 		C25D48D47A878363B9B3B06F /* libPods-GetHotel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GetHotel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC276EA5669F0347448D25E1 /* Pods-GetHotel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHotel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetHotel/Pods-GetHotel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -353,6 +356,7 @@
 		8488E29D1F4ED73D003D8DD5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B29D47A21F501651003499C4 /* MyinfoView */,
 				8488E2101F4ED3E2003D8DD5 /* Main.storyboard */,
 				8488E2A41F4ED808003D8DD5 /* HotelDetail.storyboard */,
 				8488E2A61F4ED820003D8DD5 /* MyHotel.storyboard */,
@@ -438,6 +442,15 @@
 				8488E2BD1F4EDBDF003D8DD5 /* SignUpViewController.m */,
 			);
 			name = Sign;
+			sourceTree = "<group>";
+		};
+		B29D47A21F501651003499C4 /* MyinfoView */ = {
+			isa = PBXGroup;
+			children = (
+				B29D47A31F5016A3003499C4 /* MyinfoTableViewCell.h */,
+				B29D47A41F5016A3003499C4 /* MyinfoTableViewCell.m */,
+			);
+			name = MyinfoView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -658,6 +671,7 @@
 				8488E24E1F4ED4A4003D8DD5 /* SKTagButton.m in Sources */,
 				8488E2BE1F4EDBDF003D8DD5 /* SignUpViewController.m in Sources */,
 				8488E24B1F4ED4A4003D8DD5 /* HMSegmentedControl.m in Sources */,
+				B29D47A51F5016A3003499C4 /* MyinfoTableViewCell.m in Sources */,
 				B29D479B1F4FB501003499C4 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
