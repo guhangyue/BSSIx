@@ -9,6 +9,15 @@
 #import "HotelDetailViewController.h"
 
 @interface HotelDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *hotelPictureImgView;
+@property (weak, nonatomic) IBOutlet UILabel *hotelNameLbl;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLbl;
+@property (weak, nonatomic) IBOutlet UILabel *addressLbl;
+@property (weak, nonatomic) IBOutlet UIButton *mapBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *smallPictureImgView;
+@property (weak, nonatomic) IBOutlet UIButton *chooseHotelBtn;
+@property (weak, nonatomic) IBOutlet UILabel *inTimeLbl;
+@property (weak, nonatomic) IBOutlet UILabel *outTimeLbl;
 
 @end
 
