@@ -2,7 +2,7 @@
 //  HotelViewController.h
 //  GetHotel
 //
-//  Created by admin on 2017/8/24.
+//  Created by IMAC on 2017/8/25.
 //  Copyright © 2017年 com. All rights reserved.
 //
 
