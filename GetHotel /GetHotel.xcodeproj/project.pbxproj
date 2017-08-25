@@ -46,6 +46,12 @@
 		8488E2B81F4EDB85003D8DD5 /* MyHotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2B71F4EDB85003D8DD5 /* MyHotelViewController.m */; };
 		8488E2BB1F4EDBD0003D8DD5 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2BA1F4EDBD0003D8DD5 /* SignInViewController.m */; };
 		8488E2BE1F4EDBDF003D8DD5 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2BD1F4EDBDF003D8DD5 /* SignUpViewController.m */; };
+		B29D47921F4FB41C003499C4 /* MyinfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47911F4FB41C003499C4 /* MyinfoViewController.m */; };
+		B29D47951F4FB490003499C4 /* MyAviationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47941F4FB490003499C4 /* MyAviationViewController.m */; };
+		B29D47981F4FB4D3003499C4 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47971F4FB4D3003499C4 /* InformationViewController.m */; };
+		B29D479B1F4FB501003499C4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D479A1F4FB501003499C4 /* SettingViewController.m */; };
+		B29D479E1F4FB54B003499C4 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D479D1F4FB54B003499C4 /* ProtocolViewController.m */; };
+		B29D47A11F4FB58D003499C4 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47A01F4FB58D003499C4 /* ServiceViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +143,18 @@
 		8488E2BA1F4EDBD0003D8DD5 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		8488E2BC1F4EDBDF003D8DD5 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		8488E2BD1F4EDBDF003D8DD5 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		B29D47901F4FB41C003499C4 /* MyinfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyinfoViewController.h; sourceTree = "<group>"; };
+		B29D47911F4FB41C003499C4 /* MyinfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyinfoViewController.m; sourceTree = "<group>"; };
+		B29D47931F4FB490003499C4 /* MyAviationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAviationViewController.h; sourceTree = "<group>"; };
+		B29D47941F4FB490003499C4 /* MyAviationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAviationViewController.m; sourceTree = "<group>"; };
+		B29D47961F4FB4D3003499C4 /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		B29D47971F4FB4D3003499C4 /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
+		B29D47991F4FB501003499C4 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		B29D479A1F4FB501003499C4 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		B29D479C1F4FB54B003499C4 /* ProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolViewController.h; sourceTree = "<group>"; };
+		B29D479D1F4FB54B003499C4 /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
+		B29D479F1F4FB58D003499C4 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
+		B29D47A01F4FB58D003499C4 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		C25D48D47A878363B9B3B06F /* libPods-GetHotel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GetHotel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC276EA5669F0347448D25E1 /* Pods-GetHotel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHotel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetHotel/Pods-GetHotel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -393,8 +411,20 @@
 		8488E2A21F4ED7B5003D8DD5 /* MyHotel */ = {
 			isa = PBXGroup;
 			children = (
+				B29D47901F4FB41C003499C4 /* MyinfoViewController.h */,
+				B29D47911F4FB41C003499C4 /* MyinfoViewController.m */,
 				8488E2B61F4EDB85003D8DD5 /* MyHotelViewController.h */,
 				8488E2B71F4EDB85003D8DD5 /* MyHotelViewController.m */,
+				B29D47931F4FB490003499C4 /* MyAviationViewController.h */,
+				B29D47941F4FB490003499C4 /* MyAviationViewController.m */,
+				B29D47961F4FB4D3003499C4 /* InformationViewController.h */,
+				B29D47971F4FB4D3003499C4 /* InformationViewController.m */,
+				B29D47991F4FB501003499C4 /* SettingViewController.h */,
+				B29D479A1F4FB501003499C4 /* SettingViewController.m */,
+				B29D479C1F4FB54B003499C4 /* ProtocolViewController.h */,
+				B29D479D1F4FB54B003499C4 /* ProtocolViewController.m */,
+				B29D479F1F4FB58D003499C4 /* ServiceViewController.h */,
+				B29D47A01F4FB58D003499C4 /* ServiceViewController.m */,
 			);
 			name = MyHotel;
 			sourceTree = "<group>";
@@ -599,16 +629,21 @@
 			files = (
 				8488E2AF1F4EDB26003D8DD5 /* HotelViewController.m in Sources */,
 				8488E2921F4ED4B9003D8DD5 /* Utilities.m in Sources */,
+				B29D47A11F4FB58D003499C4 /* ServiceViewController.m in Sources */,
 				8488E2B21F4EDB57003D8DD5 /* HotelDetailViewController.m in Sources */,
 				8488E2901F4ED4B9003D8DD5 /* StorageMgr.m in Sources */,
 				8488E28D1F4ED4B9003D8DD5 /* NSDateFormatter+Category.m in Sources */,
 				8488E20F1F4ED3E2003D8DD5 /* ViewController.m in Sources */,
+				B29D479E1F4FB54B003499C4 /* ProtocolViewController.m in Sources */,
 				8488E28E1F4ED4B9003D8DD5 /* NSString+Crypt.m in Sources */,
 				8488E28B1F4ED4B9003D8DD5 /* NSData+Base64.m in Sources */,
+				B29D47981F4FB4D3003499C4 /* InformationViewController.m in Sources */,
 				8488E2151F4ED3E2003D8DD5 /* GetHotel.xcdatamodeld in Sources */,
 				8488E24D1F4ED4A4003D8DD5 /* SKTag.m in Sources */,
 				8488E20C1F4ED3E2003D8DD5 /* AppDelegate.m in Sources */,
 				8488E28A1F4ED4B9003D8DD5 /* JSONS.m in Sources */,
+				B29D47921F4FB41C003499C4 /* MyinfoViewController.m in Sources */,
+				B29D47951F4FB490003499C4 /* MyAviationViewController.m in Sources */,
 				8488E2891F4ED4B9003D8DD5 /* ErrorHandler.m in Sources */,
 				8488E28F1F4ED4B9003D8DD5 /* RequestAPI.m in Sources */,
 				8488E2B51F4EDB6A003D8DD5 /* PayViewController.m in Sources */,
@@ -623,6 +658,7 @@
 				8488E24E1F4ED4A4003D8DD5 /* SKTagButton.m in Sources */,
 				8488E2BE1F4EDBDF003D8DD5 /* SignUpViewController.m in Sources */,
 				8488E24B1F4ED4A4003D8DD5 /* HMSegmentedControl.m in Sources */,
+				B29D479B1F4FB501003499C4 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
