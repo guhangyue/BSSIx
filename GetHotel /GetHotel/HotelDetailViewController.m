@@ -34,9 +34,9 @@
 }
 - (void)naviConfig {
     //设置导航条标题文字
-    self.navigationItem.title = @"酒店";
+    self.navigationItem.title = @"酒店预订";
     //设置导航条颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
     //设置导航条标题颜色
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏.
