@@ -8,8 +8,9 @@
 
 #import "ServiceViewController.h"
 
-@interface ServiceViewController ()
-
+@interface ServiceViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *serviceTableView;
+@property (strong, nonatomic) NSArray *arr;
 @end
 
 @implementation ServiceViewController
@@ -17,11 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _arr = @[@{@"title":@"客服电话",@"content":@"10086"},@{@"title":@"客服QQ",@"content":@"10086110"}];
+    
+    _serviceTableView.tableFooterView = [UIView new];
+    [self setNavigationItem];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+//当前页面将要显示的时候，显示导航栏
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 /*
@@ -33,5 +43,47 @@
     // Pass the selected object to the new view controller.
 }
 */
+//设置导航栏样式
+- (void)setNavigationItem{
+    self.navigationItem.title = @"联系我们";
+    
+    self.navigationController.navigationBar.backgroundColor = [UIColor blueColor];
+    
+    //实例化一个button 类型为UIButtonTypeSystem
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    //设置位置大小
+    leftBtn.frame = CGRectMake(0, 0, 20, 20);
+    //设置其背景图片为返回图片
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    //给按钮添加事件
+    [leftBtn addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+}
+//自定的返回按钮的事件
+- (void)leftButtonAction: (UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+//每组多少行
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _arr.count;
+}
+
+//细胞长什么样
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"callUsCell" forIndexPath:indexPath];
+    NSDictionary *dict = _arr[indexPath.row];
+    cell.textLabel.text = dict[@"title"];
+    cell.detailTextLabel.text = dict[@"content"];
+    return cell;
+}
+//设置每行高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50.f;
+}
+//细胞选中后调用
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 @end

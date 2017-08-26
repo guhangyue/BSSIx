@@ -17,11 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setNavigationItem];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+//当前页面将要显示的时候，显示导航栏
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 /*
@@ -33,5 +39,11 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+//设置导航栏样式
+- (void)setNavigationItem{
+    self.navigationItem.title = @"我的航空";
+    self.navigationController.navigationBar.backgroundColor = [UIColor blueColor];
+    //[self.navigationController.navigationBar setBarTintColor:HEAD_THEMECOLOR];
+    
+}
 @end

@@ -8,7 +8,9 @@
 
 #import "MyinfoViewController.h"
 #import "MyinfoTableViewCell.h"
-@interface MyinfoViewController ()
+#import "UserModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+@interface MyinfoViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *headImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;
@@ -23,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _myInfoArr = @[@{@"leftIcon":@"酒店详情小图标",@"title":@"我的酒店"},@{@"leftIcon":@"航空",@"title":@"我的航空"},@{@"leftIcon":@"我的消息",@"title":@"我的消息"},@{@"leftIcon":@"设置",@"title":@"账户设置"},@{@"leftIcon":@"使用协议",@"title":@"使用协议"},@{@"leftIcon":@"联系客服",@"title":@"联系客服"}];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,6 +36,23 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    if([Utilities loginCheck]){
+        //已登录
+        _loginBtn.hidden=YES;
+        _nameLabel.hidden=NO;
+        UserModel *user=[[StorageMgr singletonStorageMgr]objectForKey:@"UserInfo"];
+        [_headImage sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"用户"]];
+        _nameLabel.text=user.nickName;
+        _gradeLabel.hidden=NO;
+    }else{
+        _loginBtn.hidden=NO;
+        _nameLabel.hidden=YES;
+        
+        _gradeLabel.hidden=YES;
+        _headImage.image=[UIImage imageNamed:@"用户"];
+        _nameLabel.text=@"游客";
+    
+    }
 }
 
 /*
@@ -79,7 +99,7 @@
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    if([Utilities loginCheck]){
     switch (indexPath.section) {
         case 0:
             [self performSegueWithIdentifier:@"myInfoToHotel" sender:self];
@@ -98,7 +118,12 @@
             break;
         default:
             [self performSegueWithIdentifier:@"myInfoToSerview" sender:self];
-            break;
+        break;
+     }
+    }else{
+        UINavigationController *signNavi=[Utilities getStoryboardInstance:@"Login" byIdentity:@"SignNavi"];
+        //执行跳转
+        [self presentViewController:signNavi animated:YES completion:nil];
     }
 }
 

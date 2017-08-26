@@ -46,6 +46,7 @@
 		8488E2BB1F4EDBD0003D8DD5 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2BA1F4EDBD0003D8DD5 /* SignInViewController.m */; };
 		8488E2BE1F4EDBDF003D8DD5 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2BD1F4EDBDF003D8DD5 /* SignUpViewController.m */; };
 		88BE34DA1F50403400DFDEF0 /* HotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE34D91F50403400DFDEF0 /* HotelViewController.m */; };
+		B24504091F5114840033D3F5 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24504081F5114840033D3F5 /* UserModel.m */; };
 		B29D47921F4FB41C003499C4 /* MyinfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47911F4FB41C003499C4 /* MyinfoViewController.m */; };
 		B29D47951F4FB490003499C4 /* MyAviationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47941F4FB490003499C4 /* MyAviationViewController.m */; };
 		B29D47981F4FB4D3003499C4 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47971F4FB4D3003499C4 /* InformationViewController.m */; };
@@ -144,6 +145,8 @@
 		8488E2BD1F4EDBDF003D8DD5 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		88BE34D81F50403400DFDEF0 /* HotelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelViewController.h; sourceTree = "<group>"; };
 		88BE34D91F50403400DFDEF0 /* HotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelViewController.m; sourceTree = "<group>"; };
+		B24504071F5114840033D3F5 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		B24504081F5114840033D3F5 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		B29D47901F4FB41C003499C4 /* MyinfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyinfoViewController.h; sourceTree = "<group>"; };
 		B29D47911F4FB41C003499C4 /* MyinfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyinfoViewController.m; sourceTree = "<group>"; };
 		B29D47931F4FB490003499C4 /* MyAviationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAviationViewController.h; sourceTree = "<group>"; };
@@ -373,6 +376,8 @@
 		8488E29E1F4ED744003D8DD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B24504071F5114840033D3F5 /* UserModel.h */,
+				B24504081F5114840033D3F5 /* UserModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -662,6 +667,7 @@
 				8488E2B51F4EDB6A003D8DD5 /* PayViewController.m in Sources */,
 				8488E2BB1F4EDBD0003D8DD5 /* SignInViewController.m in Sources */,
 				8488E24C1F4ED4A4003D8DD5 /* BasicEncodingRules.m in Sources */,
+				B24504091F5114840033D3F5 /* UserModel.m in Sources */,
 				8488E2091F4ED3E2003D8DD5 /* main.m in Sources */,
 				8488E2AC1F4EDAC1003D8DD5 /* MyViewController.m in Sources */,
 				8488E28C1F4ED4B9003D8DD5 /* NSDate+Utility.m in Sources */,
