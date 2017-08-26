@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,6 +36,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signAction:forEvent:" destination="JUs-bE-VFY" eventType="touchUpInside" id="nHk-AM-gWB"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" semanticContentAttribute="playback" translatesAutoresizingMaskIntoConstraints="NO" id="Vo8-F8-jAP">
                                 <rect key="frame" x="36" y="124" width="303" height="220"/>
@@ -56,7 +59,7 @@
                                         </constraints>
                                         <state key="normal" title="注册新用户"/>
                                         <connections>
-                                            <segue destination="GrK-Se-zqA" kind="show" id="n63-Zj-4lp"/>
+                                            <segue destination="u2s-e8-x8U" kind="show" id="kiw-XO-iOn"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像" translatesAutoresizingMaskIntoConstraints="NO" id="JNm-jO-ovd">
@@ -66,7 +69,7 @@
                                             <constraint firstAttribute="width" secondItem="JNm-jO-ovd" secondAttribute="height" multiplier="1:1" id="2j6-vq-qOU"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NKd-mE-ogo">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="手机图像" translatesAutoresizingMaskIntoConstraints="NO" id="NKd-mE-ogo">
                                         <rect key="frame" x="15" y="75" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="1D4-JQ-4A9"/>
@@ -90,7 +93,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j0W-O4-1XP">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="密码" translatesAutoresizingMaskIntoConstraints="NO" id="j0W-O4-1XP">
                                         <rect key="frame" x="15" y="122" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7rb-bY-iDA"/>
@@ -148,6 +151,10 @@
                     <navigationItem key="navigationItem" title="登录" id="O6W-LQ-ctU"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="passWordtextword" destination="BnU-tu-PYI" id="YDJ-8a-gFP"/>
+                        <outlet property="userPhonetextword" destination="kge-ju-JkR" id="C6h-kb-Tb8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZ8-He-Dzm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -229,7 +236,7 @@
         <!--会员注册-->
         <scene sceneID="X8R-3o-nrV">
             <objects>
-                <viewController id="33z-eI-IrB" sceneMemberID="viewController">
+                <viewController id="33z-eI-IrB" customClass="SignUpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TFi-vV-Kxz"/>
                         <viewControllerLayoutGuide type="bottom" id="Koa-Ut-fC9"/>
@@ -356,33 +363,41 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="会员注册" id="smW-rq-LIR"/>
+                    <connections>
+                        <outlet property="confirmPasstextfiled" destination="esJ-XB-aD2" id="iq2-ND-zmu"/>
+                        <outlet property="passWordtextfiled" destination="KZc-Fn-0xR" id="UK1-Ck-QEL"/>
+                        <outlet property="userPhonetextfiled" destination="GCD-90-0M7" id="geq-ig-zCj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63X-L5-UPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2786" y="63"/>
+            <point key="canvasLocation" x="2492" y="63"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="yZp-uV-AtN">
+        <scene sceneID="RGy-c3-ZZX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GrK-Se-zqA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u2s-e8-x8U" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dtf-Ce-2kx">
+                    <navigationItem key="navigationItem" id="kXh-wA-ZeM"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WU6-dM-dcf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="33z-eI-IrB" kind="relationship" relationship="rootViewController" id="Fg7-yy-6eF"/>
+                        <segue destination="33z-eI-IrB" kind="relationship" relationship="rootViewController" id="NV4-PK-GmZ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FZL-LW-ljb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Tb-FH-kHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="63"/>
+            <point key="canvasLocation" x="1785" y="63"/>
         </scene>
     </scenes>
     <resources>
         <image name="头像" width="100" height="100"/>
+        <image name="密码" width="17" height="22"/>
         <image name="我的-选中" width="22" height="22"/>
+        <image name="手机图像" width="22" height="22"/>
         <image name="电话" width="25" height="25"/>
         <image name="账号与安全" width="22" height="22"/>
     </resources>

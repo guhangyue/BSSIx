@@ -9,6 +9,9 @@
 #import "SignUpViewController.h"
 
 @interface SignUpViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *userPhonetextfiled;
+@property (weak, nonatomic) IBOutlet UITextField *passWordtextfiled;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPasstextfiled;
 
 @end
 
