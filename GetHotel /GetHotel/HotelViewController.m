@@ -313,7 +313,7 @@
 //执行网络请求
 - (void)networkRequest{
     NSLog(@"123");
-         NSDictionary *para = @{@"city_name":@"无锡",@"pageNum":@1,@"pageSize":@10,@"startId":@1,@"priceId":@1,@"sortingId":@1,@"inTime":@1,@"outTime":@1,@"wxlongitude":@"31.568",@"wxlatitude":@"120.299"};
+         NSDictionary *para = @{@"page" : @(page), @"perPage" : @(perPage),@"city": _cityBtn.titleLabel.text};
     NSLog(@"456");
         [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             NSLog(@"789");
