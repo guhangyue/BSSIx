@@ -139,6 +139,14 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uo8-FY-2W4" userLabel="Third View">
                                         <rect key="frame" x="750" y="0.0" width="375" height="200"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cag-fM-JcA">
+                                        <rect key="frame" x="249" y="45" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <segue destination="hag-1R-RW9" kind="show" id="Gjp-AB-EZv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Uo8-FY-2W4" firstAttribute="width" secondItem="Dw8-fB-iEh" secondAttribute="width" id="1fd-wI-VIp"/>
@@ -243,7 +251,6 @@
                                             <outlet property="hotelDistance" destination="hWW-lp-s0M" id="zn4-bN-AjQ"/>
                                             <outlet property="hotelImage" destination="jzE-tY-Ky2" id="Gm1-VI-raa"/>
                                             <outlet property="hotelMoney" destination="FAf-u8-yPx" id="M1i-lP-dFa"/>
-                                            <segue destination="hag-1R-RW9" kind="show" identifier="CellToDetail" id="VCQ-To-WDR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -304,13 +311,13 @@
             </objects>
             <point key="canvasLocation" x="-1719" y="470"/>
         </scene>
-        <!--HotelDetail-->
+        <!--1-->
         <scene sceneID="Iye-xd-maX">
             <objects>
-                <viewControllerPlaceholder storyboardName="HotelDetail" id="hag-1R-RW9" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="HotelDetail" referencedIdentifier="1" id="hag-1R-RW9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bql-LG-Oce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="-220"/>
+            <point key="canvasLocation" x="482" y="-402"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
