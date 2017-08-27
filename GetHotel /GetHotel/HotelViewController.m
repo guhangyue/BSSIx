@@ -9,11 +9,16 @@
 #import "HotelViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface HotelViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>
-
+@interface HotelViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
+    BOOL isLoading;
+    BOOL firstVisit;
+}
+@property (strong, nonatomic) UIActivityIndicatorView *aiv;
 @property (strong, nonatomic) NSMutableArray *arr;
 @property(strong,nonatomic) CLLocationManager *locMgr;
 @property (weak, nonatomic) IBOutlet UITableView *HotelTabView;
+@property (weak, nonatomic) IBOutlet UIButton *cityBtn;
+
 @end
 
 @implementation HotelViewController
@@ -141,6 +146,38 @@
     UIRefreshControl *refresh = (UIRefreshControl *)[self.HotelTabView viewWithTag:10001];
     //结束刷新
     [refresh endRefreshing];
+}
+//这个方法专门做数据的处理
+- (void)dataInitialize {
+    BOOL appInit = NO;
+    
+    if ([[Utilities getUserDefaults:@"UserCity"] isKindOfClass:[NSNull class]]) {
+        //说明是第一次打开APP
+        appInit =  YES;
+    }else{
+        if ([Utilities getUserDefaults:@"UserCity"] ==nil) {
+            //也说明是第一次打开APP
+            appInit = YES;
+        }
+    }
+    if (appInit) {
+        //第一次来到APP将默认城市与记忆城市同步
+        NSString *userCity = _cityBtn.titleLabel.text;
+        [Utilities setUserDefaults:@"UserCity" content:userCity];
+    }else{
+        //不是第一次来到APP则将记忆城市与安宁上的城市名反向同步
+        NSString *userCity =[Utilities getUserDefaults:@"UserCity"];
+        [_cityBtn setTitle:userCity forState:UIControlStateNormal];
+        
+    }
+    
+    
+    firstVisit = YES;
+    isLoading = NO;
+    _arr = [NSMutableArray new];
+    //创建菊花膜
+    _aiv = [Utilities getCoverOnView:self.view];
+    //[self refreshPage];
 }
 
 

@@ -370,8 +370,6 @@
 			children = (
 				B29D47A21F501651003499C4 /* MyinfoView */,
 				8488E2101F4ED3E2003D8DD5 /* Main.storyboard */,
-				8488E2A41F4ED808003D8DD5 /* HotelDetail.storyboard */,
-				8488E2A61F4ED820003D8DD5 /* MyHotel.storyboard */,
 				8488E2A81F4ED832003D8DD5 /* Sign.storyboard */,
 				8488E2161F4ED3E2003D8DD5 /* Assets.xcassets */,
 				8488E2181F4ED3E2003D8DD5 /* LaunchScreen.storyboard */,
@@ -418,6 +416,7 @@
 		8488E2A11F4ED7A0003D8DD5 /* HotelDetail */ = {
 			isa = PBXGroup;
 			children = (
+				8488E2A41F4ED808003D8DD5 /* HotelDetail.storyboard */,
 				8488E2B01F4EDB57003D8DD5 /* HotelDetailViewController.h */,
 				8488E2B11F4EDB57003D8DD5 /* HotelDetailViewController.m */,
 				8488E2B31F4EDB6A003D8DD5 /* PayViewController.h */,
@@ -465,6 +464,7 @@
 		B29D47A21F501651003499C4 /* MyinfoView */ = {
 			isa = PBXGroup;
 			children = (
+				8488E2A61F4ED820003D8DD5 /* MyHotel.storyboard */,
 				B29D47A31F5016A3003499C4 /* MyinfoTableViewCell.h */,
 				B29D47A41F5016A3003499C4 /* MyinfoTableViewCell.m */,
 				B24504101F527EED0033D3F5 /* OrderTableViewCell.h */,
