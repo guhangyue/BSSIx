@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FEA-0d-OoA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -24,7 +23,7 @@
                     <connections>
                         <segue destination="kCC-Wj-FME" kind="relationship" relationship="viewControllers" id="ea8-BB-V7g"/>
                         <segue destination="S0T-8M-OhD" kind="relationship" relationship="viewControllers" id="FL6-Wb-Ziu"/>
-                        <segue destination="eQi-fN-yf4" kind="relationship" relationship="viewControllers" id="V6v-U8-4WU"/>
+                        <segue destination="SYo-qb-v1X" kind="relationship" relationship="viewControllers" id="SWj-FU-Znk"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRp-Rv-ent" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -219,7 +218,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$310" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAf-u8-yPx">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="310" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAf-u8-yPx">
                                                     <rect key="frame" x="306" y="77" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -244,6 +243,7 @@
                                             <outlet property="hotelDistance" destination="hWW-lp-s0M" id="zn4-bN-AjQ"/>
                                             <outlet property="hotelImage" destination="jzE-tY-Ky2" id="Gm1-VI-raa"/>
                                             <outlet property="hotelMoney" destination="FAf-u8-yPx" id="M1i-lP-dFa"/>
+                                            <segue destination="hag-1R-RW9" kind="show" identifier="CellToDetail" id="VCQ-To-WDR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -294,24 +294,23 @@
             </objects>
             <point key="canvasLocation" x="-141.59999999999999" y="-826.23688155922048"/>
         </scene>
-        <!--My View Controller-->
-        <scene sceneID="EQJ-Vr-bbB">
+        <!--my-->
+        <scene sceneID="ApI-Ue-g7a">
             <objects>
-                <viewController id="4jU-YB-CcY" customClass="MyViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1gN-29-Zid"/>
-                        <viewControllerLayoutGuide type="bottom" id="5j0-zD-b4Y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JHe-YR-Kdr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="OF9-AI-7Hd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="thY-3p-zBR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="MyHotel" referencedIdentifier="my" id="SYo-qb-v1X" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的" image="我的-选中" id="fDq-I5-9oh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UfS-fg-PZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="707"/>
+            <point key="canvasLocation" x="-1719" y="470"/>
+        </scene>
+        <!--HotelDetail-->
+        <scene sceneID="Iye-xd-maX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HotelDetail" id="hag-1R-RW9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bql-LG-Oce" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="-220"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -350,25 +349,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7z-67-Yal" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1010" y="-54"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="qhj-Qy-VjQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eQi-fN-yf4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="bNI-m9-0tX"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GFM-xb-bP5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="4jU-YB-CcY" kind="relationship" relationship="rootViewController" id="fyS-Tv-ZjK"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W67-YI-87h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1010" y="707"/>
         </scene>
         <!--Item-->
         <scene sceneID="OPg-BR-Yb9">
@@ -680,6 +660,7 @@
     </scenes>
     <resources>
         <image name="地点" width="31" height="39"/>
+        <image name="我的-选中" width="22" height="22"/>
         <image name="收起的副本" width="22" height="22"/>
         <image name="放大镜" width="144" height="144"/>
         <image name="气象" width="144" height="144"/>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u7E-pS-B24">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u7E-pS-B24">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -59,6 +58,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginAction:forEvent:" destination="otw-uu-CLT" eventType="touchUpInside" id="Lmy-Kn-gri"/>
+                                            <segue destination="HC4-pV-rzr" kind="show" id="UVa-bt-luJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -82,7 +82,7 @@
                                 <rect key="frame" x="0.0" y="200" width="375" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="vaV-XH-6Se" customClass="MyinfoTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myInfoCell" rowHeight="52" id="vaV-XH-6Se" customClass="MyinfoTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vaV-XH-6Se" id="P3M-nc-nWm">
@@ -151,6 +151,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEF-17-RXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="156" y="-69.715142428785612"/>
+        </scene>
+        <!--Sign-->
+        <scene sceneID="WLc-cJ-C4V">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sign" id="HC4-pV-rzr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eiL-5o-yaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="726" y="-145"/>
         </scene>
         <!--我的航空-->
         <scene sceneID="vtJ-r9-XZt">
@@ -855,10 +863,10 @@
             </objects>
             <point key="canvasLocation" x="925.60000000000002" y="799.2503748125938"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--我的-->
         <scene sceneID="zGW-WD-pef">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u7E-pS-B24" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="my" title="我的" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u7E-pS-B24" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NTy-5Z-Cyw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

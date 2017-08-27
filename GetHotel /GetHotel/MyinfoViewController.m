@@ -140,7 +140,7 @@
         break;
      }
     }else{
-        UINavigationController *signNavi=[Utilities getStoryboardInstance:@"Login" byIdentity:@"SignNavi"];
+        UINavigationController *signNavi=[Utilities getStoryboardInstance:@"Sign" byIdentity:@"SignNavi"];
         //执行跳转
         [self presentViewController:signNavi animated:YES completion:nil];
     }
