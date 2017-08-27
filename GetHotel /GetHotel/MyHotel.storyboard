@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u7E-pS-B24">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u7E-pS-B24">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -467,11 +467,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="143" id="I0I-dh-hI1">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="143" id="I0I-dh-hI1" customClass="OrderTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="143"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I0I-dh-hI1" id="Rg5-dv-LZS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="142.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="希尔顿酒店套房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bot-pc-mHQ">
@@ -563,6 +563,14 @@
                                                         <constraint firstItem="hmx-s2-WIz" firstAttribute="leading" secondItem="O9t-vq-XsZ" secondAttribute="leading" id="wLx-nY-JwZ"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="endDateLabel" destination="jfX-SB-Ld2" id="XP7-Xn-aTw"/>
+                                                    <outlet property="hotelAddressLAbel" destination="3Sq-RB-aTK" id="4YQ-tN-H7B"/>
+                                                    <outlet property="hotelImg" destination="72V-c2-xfQ" id="xI0-YN-X5P"/>
+                                                    <outlet property="hotelPeopleNumLabel" destination="O9t-vq-XsZ" id="Sdp-BV-Wf1"/>
+                                                    <outlet property="hotelTypeLabel" destination="Bot-pc-mHQ" id="r8X-2A-CvH"/>
+                                                    <outlet property="startDateLabel" destination="hmx-s2-WIz" id="3SP-WQ-wPm"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -574,7 +582,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="141"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N6z-Ko-uet" id="1wg-Oz-oId">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="141"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="希尔顿酒店套房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iF8-NF-l11">
@@ -679,7 +687,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="145"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O8c-VE-AwC" id="eqM-hO-PWF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="144.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="希尔顿酒店套房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yt-Qd-Dxv">
