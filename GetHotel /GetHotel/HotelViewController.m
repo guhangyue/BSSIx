@@ -27,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *FirstImage;
 @property (weak, nonatomic) IBOutlet UIImageView *SeconImage;
 @property (weak, nonatomic) IBOutlet UIImageView *ThirdImage;
+@property (weak, nonatomic) IBOutlet UIImageView *FirstView;
+@property (weak, nonatomic) IBOutlet UIImageView *SeconView;
+@property (weak, nonatomic) IBOutlet UIImageView *ThirdView;
 
 @property (strong, nonatomic) NSMutableArray *adArr;
 
@@ -38,6 +41,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self dataInitialize];
+    [self locationConfig];
+    [self networkRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -280,30 +286,49 @@
     firstVisit = YES;
     isLoading = NO;
     _arr = [NSMutableArray new];
+    _adArr = [NSMutableArray new];
     //创建菊花膜
     _aiv = [Utilities getCoverOnView:self.view];
     [self refreshPage];
 }
+- (void)setADImage {
+    NSMutableArray *urlArr = [NSMutableArray new];
+    
+    for (HotelModel *ad in _adArr) {
+        [urlArr addObject:ad.adImg];
+    }
+    //NSLog(@"%@",urlArr);
+    
+    
+    
+    [_FirstView sd_setImageWithURL:[NSURL URLWithString:urlArr[0]] placeholderImage:[UIImage imageNamed:@"酒店"]];
+    [_SeconView sd_setImageWithURL:[NSURL URLWithString:urlArr[1]] placeholderImage:[UIImage imageNamed:@"酒店"]];
+    [_ThirdView sd_setImageWithURL:[NSURL URLWithString:urlArr[2]] placeholderImage:[UIImage imageNamed:@"酒店"]];
+}
+
 - (void)refreshPage {
     page = 1;
     [self networkRequest];
 }
 //执行网络请求
 - (void)networkRequest{
-    if (!isLoading) {
-        isLoading = YES;
-        NSDictionary *para=@{@"page" : @(page), @"perPage" : @(perPage),@"city": _cityBtn.titleLabel.text};
-        [RequestAPI requestURL:@"/findAllHotelAndAdvertising" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+    NSLog(@"123");
+         NSDictionary *para = @{@"city_name":@"无锡",@"pageNum":@1,@"pageSize":@10,@"startId":@1,@"priceId":@1,@"sortingId":@1,@"inTime":@1,@"outTime":@1,@"wxlongitude":@"31.568",@"wxlatitude":@"120.299"};
+    NSLog(@"456");
+        [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+            NSLog(@"789");
             NSLog(@"responseObject = %@",responseObject);
             [_aiv stopAnimating];
-            if ([responseObject[@"result"] integerValue] == 0) {
+            if ([responseObject[@"result"] integerValue] == 1) {
+                if (_adArr.count == 0) {
                 NSArray *advertising = responseObject[@"content"][@"advertising"];
                 for (NSDictionary *dict in advertising) {
                     HotelModel *ad = [[HotelModel alloc] initWithDictForAD:dict];
                     [_adArr addObject:ad];
-                    
                 }
-                NSArray *hotel = responseObject[@"content"][@"hotel"];
+                }
+                NSArray *hotel = responseObject[@"content"][@"hotel"][@"list"];
+                [_arr removeAllObjects];
                 for (NSDictionary *dict in hotel) {
                     HotelModel *hotelModel = [[HotelModel alloc] initWithDictForHotelCell:dict];
                     //NSLog(@"%@",hotelModel.hotelName);
@@ -316,7 +341,6 @@
         }failure:^(NSInteger statusCode, NSError *error) {
             [_aiv stopAnimating];
         }];
-    }
 }
 - (void)endAnimation {
     isLoading = NO;
@@ -342,8 +366,7 @@
         if (page <totalPage) {
             //在这里执行上拉翻页的数据操作
             page ++;
-            [self networkRequest];
-        }
+                  }
     }
 }
 //设置每一组中每一行的cell（细胞）长什么样
