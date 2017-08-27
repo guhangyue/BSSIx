@@ -573,12 +573,16 @@
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="FV0-da-DvJ" id="8Ad-4v-Z7J"/>
+                                            <outlet property="delegate" destination="FV0-da-DvJ" id="DSt-Ai-Ob0"/>
+                                        </connections>
                                     </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pUx-r6-hQT" userLabel="123">
                                         <rect key="frame" x="375" y="0.0" width="375" height="543"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="141" id="N6z-Ko-uet">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="141" id="N6z-Ko-uet" customClass="AvailableTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="141"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N6z-Ko-uet" id="1wg-Oz-oId">
@@ -676,14 +680,26 @@
                                                         <constraint firstItem="pKS-XI-mCv" firstAttribute="leading" secondItem="dN9-cz-Ubd" secondAttribute="trailing" constant="10" id="yMb-1K-IG6"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="endDateLabel" destination="mTY-jy-oYf" id="5hK-nb-xWo"/>
+                                                    <outlet property="hotelAddressLabel" destination="pKS-XI-mCv" id="2f9-K4-JnM"/>
+                                                    <outlet property="hotelImg" destination="YUy-cs-U4K" id="dLC-xy-Ccq"/>
+                                                    <outlet property="hotelPeopleNumLabel" destination="Zsz-ea-Tik" id="WBt-fw-9P6"/>
+                                                    <outlet property="hotelTypeLabel" destination="iF8-NF-l11" id="Wkc-zZ-Y1K"/>
+                                                    <outlet property="startDateLabel" destination="Y2e-cD-7Zx" id="rnV-lL-hnp"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="FV0-da-DvJ" id="KUp-oN-Lft"/>
+                                            <outlet property="delegate" destination="FV0-da-DvJ" id="B54-TM-AX7"/>
+                                        </connections>
                                     </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="145" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P0T-3v-4jh" userLabel="456">
                                         <rect key="frame" x="750" y="0.0" width="375" height="543"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="145" id="O8c-VE-AwC">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="145" id="O8c-VE-AwC" customClass="ExpiredTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="145"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O8c-VE-AwC" id="eqM-hO-PWF">
@@ -781,8 +797,20 @@
                                                         <constraint firstItem="kxp-Gv-pND" firstAttribute="top" secondItem="hBY-zu-Tqs" secondAttribute="top" id="v0d-vV-v5f"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="endDateLabel" destination="J9N-EQ-xwF" id="gK7-LB-n8b"/>
+                                                    <outlet property="hotelAddressLabel" destination="kxp-Gv-pND" id="5a8-sg-5OG"/>
+                                                    <outlet property="hotelImg" destination="Zs6-2H-gh4" id="jA8-4h-tTh"/>
+                                                    <outlet property="hotelPeopleNumLabel" destination="Bgz-HC-NRn" id="Q7v-vS-qv8"/>
+                                                    <outlet property="hotelTypeLabel" destination="2Yt-Qd-Dxv" id="LxQ-fL-fgT"/>
+                                                    <outlet property="startDateLabel" destination="ZTH-iV-pLu" id="Vqm-ac-NII"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="FV0-da-DvJ" id="zwJ-EO-drY"/>
+                                            <outlet property="delegate" destination="FV0-da-DvJ" id="pe3-0Z-pni"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -815,6 +843,13 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="AllOrdersTableView" destination="GAR-Ay-DuZ" id="x41-yv-Kxt"/>
+                        <outlet property="AvailableTableView" destination="pUx-r6-hQT" id="AMu-sG-RCf"/>
+                        <outlet property="ExpiredTableView" destination="P0T-3v-4jh" id="lUR-3U-lLW"/>
+                        <outlet property="scrollView" destination="Q9y-vb-dfb" id="GAr-ru-uqx"/>
+                        <outlet property="titleView" destination="GSl-7X-4qT" id="f4r-uV-fXi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4YW-lP-Xhf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

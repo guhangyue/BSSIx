@@ -10,6 +10,9 @@
 #import "HMSegmentedControl.h"
 #import "UserModel.h"
 #import "OrderTableViewCell.h"
+#import "AvailableTableViewCell.h"
+#import "ExpiredTableViewCell.h"
+
 @interface MyHotelViewController ()<UITableViewDelegate,UITableViewDelegate,UIScrollViewDelegate>{
     NSInteger allOrdersPageNum;
     NSInteger availablePageNum;
@@ -20,6 +23,12 @@
     
     
 }
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITableView *AllOrdersTableView;
+@property (weak, nonatomic) IBOutlet UITableView *AvailableTableView;
+@property (weak, nonatomic) IBOutlet UITableView *ExpiredTableView;
+@property (weak, nonatomic) IBOutlet UIView *titleView;
+
 
 
 
@@ -51,8 +60,8 @@
     _expiredArr = [NSMutableArray new];
     
     //[self allOrdersRequest];
-    //[self setSegment];
-    //[self setNavigationItem];
+    [self setSegment];
+    [self setNavigationItem];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,7 +76,7 @@
 #pragma mark - scrollView
 
 //scrollView已经停止减速
-/*- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     if (scrollView == _scrollView) {
         NSInteger page = [self scrollCheck:scrollView];
         //NSLog(@"page = %ld", (long)page);
@@ -103,7 +112,7 @@
 - (void)allOrdersInitializeData{
     _avi = [Utilities getCoverOnView:self.view];
     [self allOrdersRequest];
-}*/
+}
 #pragma mark - request
 //全部订单网络请求
 - (void)allOrdersRequest{
@@ -121,7 +130,7 @@
 #pragma mark - setSegment设置菜单栏
 
 //初始化菜单栏的方法
-/*- (void)setSegment{
+- (void)setSegment{
     _segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"全部订单",@"可使用",@"已过期"]];
     //设置位置
     _segmentedControl.frame = CGRectMake(0, 60, UI_SCREEN_W, 60);
@@ -163,7 +172,26 @@
     [leftBtn addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-}*/
+}
+//自定的返回按钮的事件
+- (void)leftButtonAction: (UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+#pragma mark - tableView
+//多少组
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if (tableView == _AllOrdersTableView) {
+        return _allOrdersArr.count;
+    }else if (tableView == _AvailableTableView) {
+        return _availableArr.count;
+    }else{
+        return _expiredArr.count;
+    }
+}
+//每组多少行
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
 
 /*
 #pragma mark - Navigation
@@ -174,5 +202,55 @@
     // Pass the selected object to the new view controller.
 }
 */
+//每行长什么样
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UIImage *homeImg = [UIImage imageNamed:@"Home"];
+    //NSLog(@"进入allordersTableView");
+    NSDictionary *dict = @{@"hotelAddressLAbel":@"江苏省无锡市",@"hotelPeopleNumLabel":@"一人入住",@"hotelTypeLabel":@"总统套房",@"startDateLabel":@"2017-7-16",@"endDateLabel":@"2017-8-27",@"hotelImg":homeImg};
+    if (tableView == _AllOrdersTableView) {
+        OrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"allOrdersCell" forIndexPath:indexPath];
+        NSLog(@"进入allordersTableView");
+        
+        
+        
+        cell.hotelTypeLabel.text = @"123456";
+        cell.hotelAddressLAbel.text = dict[@"hotelAddressLAbel"];
+        cell.hotelPeopleNumLabel.text = dict[@"hotelPeopleNumLabel"];
+        cell.startDateLabel.text = dict[@"startDateLabel"];
+        cell.endDateLabel.text = dict[@"endDateLabel"];
+        cell.hotelImg.image = dict[@"homeImg"];
+        
+        return cell;
+        
+    }else if (tableView == _AvailableTableView) {
+        AvailableTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"availableCell" forIndexPath:indexPath];
+        // [_availableArr addObject:dict];
+        
+        dict = _availableArr[indexPath.section];
+        cell.hotelTypeLabel.text = @"123456";
+        cell.hotelAddressLabel.text = dict[@"hotelAddressLAbel"];
+        cell.hotelPeopleNumLabel.text = dict[@"hotelPeopleNumLabel"];
+        cell.startDateLabel.text = dict[@"startDateLabel"];
+        cell.endDateLabel.text = dict[@"endDateLabel"];
+        cell.hotelImg.image = dict[@"homeImg"];
+        return cell;
+    }else{
+        ExpiredTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"expiredCell" forIndexPath:indexPath];
+        
+        dict = _expiredArr[indexPath.section];
+        //[_expiredArr addObject:dict];
+        cell.hotelTypeLabel.text = @"123456";
+        cell.hotelAddressLabel.text = dict[@"hotelAddressLAbel"];
+        cell.hotelPeopleNumLabel.text = dict[@"hotelPeopleNumLabel"];
+        cell.startDateLabel.text = dict[@"startDateLabel"];
+        cell.endDateLabel.text = dict[@"endDateLabel"];
+        cell.hotelImg.image = dict[@"homeImg"];
+        return cell;
+    }
+}
+//设置细胞高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80.f;
+}
 
 @end

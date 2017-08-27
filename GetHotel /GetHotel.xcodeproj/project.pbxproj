@@ -48,6 +48,8 @@
 		88BE34DA1F50403400DFDEF0 /* HotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE34D91F50403400DFDEF0 /* HotelViewController.m */; };
 		B24504091F5114840033D3F5 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24504081F5114840033D3F5 /* UserModel.m */; };
 		B24504121F527EED0033D3F5 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B24504111F527EED0033D3F5 /* OrderTableViewCell.m */; };
+		B24504151F5284B70033D3F5 /* AvailableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B24504141F5284B70033D3F5 /* AvailableTableViewCell.m */; };
+		B24504181F5284CC0033D3F5 /* ExpiredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B24504171F5284CC0033D3F5 /* ExpiredTableViewCell.m */; };
 		B29D47921F4FB41C003499C4 /* MyinfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47911F4FB41C003499C4 /* MyinfoViewController.m */; };
 		B29D47951F4FB490003499C4 /* MyAviationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47941F4FB490003499C4 /* MyAviationViewController.m */; };
 		B29D47981F4FB4D3003499C4 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47971F4FB4D3003499C4 /* InformationViewController.m */; };
@@ -152,6 +154,10 @@
 		B24504081F5114840033D3F5 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		B24504101F527EED0033D3F5 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
 		B24504111F527EED0033D3F5 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
+		B24504131F5284B70033D3F5 /* AvailableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableTableViewCell.h; sourceTree = "<group>"; };
+		B24504141F5284B70033D3F5 /* AvailableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableTableViewCell.m; sourceTree = "<group>"; };
+		B24504161F5284CC0033D3F5 /* ExpiredTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpiredTableViewCell.h; sourceTree = "<group>"; };
+		B24504171F5284CC0033D3F5 /* ExpiredTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpiredTableViewCell.m; sourceTree = "<group>"; };
 		B29D47901F4FB41C003499C4 /* MyinfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyinfoViewController.h; sourceTree = "<group>"; };
 		B29D47911F4FB41C003499C4 /* MyinfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyinfoViewController.m; sourceTree = "<group>"; };
 		B29D47931F4FB490003499C4 /* MyAviationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAviationViewController.h; sourceTree = "<group>"; };
@@ -469,6 +475,10 @@
 				B29D47A41F5016A3003499C4 /* MyinfoTableViewCell.m */,
 				B24504101F527EED0033D3F5 /* OrderTableViewCell.h */,
 				B24504111F527EED0033D3F5 /* OrderTableViewCell.m */,
+				B24504131F5284B70033D3F5 /* AvailableTableViewCell.h */,
+				B24504141F5284B70033D3F5 /* AvailableTableViewCell.m */,
+				B24504161F5284CC0033D3F5 /* ExpiredTableViewCell.h */,
+				B24504171F5284CC0033D3F5 /* ExpiredTableViewCell.m */,
 			);
 			name = MyinfoView;
 			sourceTree = "<group>";
@@ -665,6 +675,7 @@
 				8488E2B21F4EDB57003D8DD5 /* HotelDetailViewController.m in Sources */,
 				8488E2901F4ED4B9003D8DD5 /* StorageMgr.m in Sources */,
 				8488E28D1F4ED4B9003D8DD5 /* NSDateFormatter+Category.m in Sources */,
+				B24504151F5284B70033D3F5 /* AvailableTableViewCell.m in Sources */,
 				8488E20F1F4ED3E2003D8DD5 /* ViewController.m in Sources */,
 				B29D479E1F4FB54B003499C4 /* ProtocolViewController.m in Sources */,
 				8488E28E1F4ED4B9003D8DD5 /* NSString+Crypt.m in Sources */,
@@ -675,6 +686,7 @@
 				8488E24D1F4ED4A4003D8DD5 /* SKTag.m in Sources */,
 				B24504121F527EED0033D3F5 /* OrderTableViewCell.m in Sources */,
 				8488E20C1F4ED3E2003D8DD5 /* AppDelegate.m in Sources */,
+				B24504181F5284CC0033D3F5 /* ExpiredTableViewCell.m in Sources */,
 				8488E28A1F4ED4B9003D8DD5 /* JSONS.m in Sources */,
 				B29D47921F4FB41C003499C4 /* MyinfoViewController.m in Sources */,
 				B29D47951F4FB490003499C4 /* MyAviationViewController.m in Sources */,
