@@ -102,6 +102,9 @@
                                         <state key="normal" title="无锡">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="dEl-Ux-mW2" kind="show" id="oS1-EZ-K5e"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -184,7 +187,7 @@
                                 <rect key="frame" x="0.0" y="333" width="375" height="285"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="113" id="at8-3j-sUX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelCell" rowHeight="113" id="at8-3j-sUX" customClass="HotelTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="at8-3j-sUX" id="t8W-NM-SIH">
@@ -216,6 +219,13 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$310" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAf-u8-yPx">
+                                                    <rect key="frame" x="306" y="77" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hWW-lp-s0M" firstAttribute="leading" secondItem="sao-7W-LBf" secondAttribute="leading" id="8Ek-Uk-4Ds"/>
@@ -228,6 +238,13 @@
                                                 <constraint firstItem="jzE-tY-Ky2" firstAttribute="centerY" secondItem="t8W-NM-SIH" secondAttribute="centerY" id="xDN-g2-RCF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="HotelLocation" destination="Wa2-Ye-wlM" id="vE2-hP-yNd"/>
+                                            <outlet property="HotelName" destination="sao-7W-LBf" id="odJ-Os-Z0W"/>
+                                            <outlet property="hotelDistance" destination="hWW-lp-s0M" id="zn4-bN-AjQ"/>
+                                            <outlet property="hotelImage" destination="jzE-tY-Ky2" id="Gm1-VI-raa"/>
+                                            <outlet property="hotelMoney" destination="FAf-u8-yPx" id="M1i-lP-dFa"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -266,7 +283,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="VMP-Rk-Q7t"/>
                     <connections>
+                        <outlet property="FirstImage" destination="e2l-74-eFf" id="Vf2-p0-LHI"/>
                         <outlet property="HotelTabView" destination="NKJ-hr-g3L" id="vVQ-mU-B70"/>
+                        <outlet property="SeconImage" destination="Dw8-fB-iEh" id="Lhx-Rz-wPa"/>
+                        <outlet property="ThirdImage" destination="Uo8-FY-2W4" id="JRt-ah-S1K"/>
                         <outlet property="cityBtn" destination="Nvf-t0-ZC8" id="5xC-nV-gFc"/>
                     </connections>
                 </viewController>
