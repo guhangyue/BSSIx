@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSMutableArray *arr;
 @property(strong,nonatomic) CLLocationManager *locMgr;
+@property (weak, nonatomic) IBOutlet UITableView *HotelTabView;
 @end
 
 @implementation HotelViewController
@@ -102,7 +103,7 @@
 
 - (void)uiLayout {
     //为表格视图创建footer(该方法可以去除表格视图底部多余的下划线)
-    _activityTableView.tableFooterView = [UIView new];
+    _HotelTabView.tableFooterView = [UIView new];
     //创建下拉刷新器
     [self refreshConfiguration];
     
@@ -132,12 +133,12 @@
     //定义用户触发下拉事件时执行的方法
     [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
     //将下拉刷新控件添加到tableView中(在tableView中，下拉刷新控件会自动放置在表格视图顶部后侧位置)
-    [self.activityTableView addSubview:refreshControl];
+    [self.HotelTabView addSubview:refreshControl];
     
 }
 - (void)end{
     //在activityTableView中，根据下标为10001获得其子视图：下拉刷新控件
-    UIRefreshControl *refresh = (UIRefreshControl *)[self.activityTableView viewWithTag:10001];
+    UIRefreshControl *refresh = (UIRefreshControl *)[self.HotelTabView viewWithTag:10001];
     //结束刷新
     [refresh endRefreshing];
 }

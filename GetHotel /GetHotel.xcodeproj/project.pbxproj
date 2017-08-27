@@ -55,6 +55,8 @@
 		B29D479E1F4FB54B003499C4 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D479D1F4FB54B003499C4 /* ProtocolViewController.m */; };
 		B29D47A11F4FB58D003499C4 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47A01F4FB58D003499C4 /* ServiceViewController.m */; };
 		B29D47A51F5016A3003499C4 /* MyinfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29D47A41F5016A3003499C4 /* MyinfoTableViewCell.m */; };
+		B2E213FA1F527C5B0008650A /* userAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E213F91F527C5B0008650A /* userAddressViewController.m */; };
+		B2E213FD1F527C880008650A /* chatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E213FC1F527C880008650A /* chatingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +166,10 @@
 		B29D47A01F4FB58D003499C4 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		B29D47A31F5016A3003499C4 /* MyinfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyinfoTableViewCell.h; sourceTree = "<group>"; };
 		B29D47A41F5016A3003499C4 /* MyinfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyinfoTableViewCell.m; sourceTree = "<group>"; };
+		B2E213F81F527C5B0008650A /* userAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userAddressViewController.h; sourceTree = "<group>"; };
+		B2E213F91F527C5B0008650A /* userAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userAddressViewController.m; sourceTree = "<group>"; };
+		B2E213FB1F527C880008650A /* chatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatingViewController.h; sourceTree = "<group>"; };
+		B2E213FC1F527C880008650A /* chatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chatingViewController.m; sourceTree = "<group>"; };
 		C25D48D47A878363B9B3B06F /* libPods-GetHotel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GetHotel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC276EA5669F0347448D25E1 /* Pods-GetHotel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHotel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetHotel/Pods-GetHotel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -416,6 +422,10 @@
 				8488E2B11F4EDB57003D8DD5 /* HotelDetailViewController.m */,
 				8488E2B31F4EDB6A003D8DD5 /* PayViewController.h */,
 				8488E2B41F4EDB6A003D8DD5 /* PayViewController.m */,
+				B2E213F81F527C5B0008650A /* userAddressViewController.h */,
+				B2E213F91F527C5B0008650A /* userAddressViewController.m */,
+				B2E213FB1F527C880008650A /* chatingViewController.h */,
+				B2E213FC1F527C880008650A /* chatingViewController.m */,
 			);
 			name = HotelDetail;
 			sourceTree = "<group>";
@@ -678,10 +688,12 @@
 				8488E2AC1F4EDAC1003D8DD5 /* MyViewController.m in Sources */,
 				8488E28C1F4ED4B9003D8DD5 /* NSDate+Utility.m in Sources */,
 				8488E2B81F4EDB85003D8DD5 /* MyHotelViewController.m in Sources */,
+				B2E213FD1F527C880008650A /* chatingViewController.m in Sources */,
 				8488E24F1F4ED4A4003D8DD5 /* SKTagView.m in Sources */,
 				8488E2881F4ED4B9003D8DD5 /* AppAPIClient.m in Sources */,
 				8488E24E1F4ED4A4003D8DD5 /* SKTagButton.m in Sources */,
 				8488E2BE1F4EDBDF003D8DD5 /* SignUpViewController.m in Sources */,
+				B2E213FA1F527C5B0008650A /* userAddressViewController.m in Sources */,
 				8488E24B1F4ED4A4003D8DD5 /* HMSegmentedControl.m in Sources */,
 				B29D47A51F5016A3003499C4 /* MyinfoTableViewCell.m in Sources */,
 				B29D479B1F4FB501003499C4 /* SettingViewController.m in Sources */,
