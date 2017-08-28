@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3OZ-vW-qXb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3OZ-vW-qXb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Chating View Controller-->
         <scene sceneID="Jmw-gX-2bz">
             <objects>
-                <viewController id="d1X-YN-gco" customClass="chatingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailToTalk" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d1X-YN-gco" customClass="chatingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pX6-ap-Rbp"/>
                         <viewControllerLayoutGuide type="bottom" id="aih-bD-BmN"/>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FCAFC95D850DDBB9F80562CACFD86C24" translatesAutoresizingMaskIntoConstraints="NO" id="83j-Uc-AZs">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nQh-W7-kP8">
                                 <rect key="frame" x="10" y="607" width="302" height="30"/>
@@ -58,15 +58,16 @@
                             <constraint firstItem="83j-Uc-AZs" firstAttribute="leading" secondItem="FmC-Kq-1V5" secondAttribute="leading" id="zMR-jg-wHh"/>
                         </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fm-xo-7gu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-730" y="126"/>
         </scene>
-        <!--Hotel Detail View Controller-->
+        <!--酒店详情-->
         <scene sceneID="rZy-fi-gtg">
             <objects>
-                <viewController storyboardIdentifier="1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3OZ-vW-qXb" customClass="HotelDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="1" title="酒店详情" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3OZ-vW-qXb" customClass="HotelDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y2r-kN-Zkd"/>
                         <viewControllerLayoutGuide type="bottom" id="9d1-lz-bSW"/>
@@ -78,7 +79,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62u-xy-3IS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KNI-p5-1pL">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="07981E5B9270272BD11F1AA49EDF1D52" translatesAutoresizingMaskIntoConstraints="NO" id="KNI-p5-1pL">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="124.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="KNI-p5-1pL" secondAttribute="height" multiplier="3:1" id="v5H-Yn-Hyk"/>
@@ -335,6 +336,7 @@
                                     </label>
                                     <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TT0-tK-FI4">
                                         <rect key="frame" x="0.0" y="456.5" width="374" height="216"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <date key="date" timeIntervalSinceReferenceDate="525503593.96205002">
                                             <!--2017-08-27 05:13:13 +0000-->
                                         </date>
@@ -370,6 +372,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="K1L-ie-6bf" firstAttribute="leading" secondItem="sqG-Ea-P14" secondAttribute="trailing" constant="15" id="0aG-fj-dD6"/>
                                     <constraint firstItem="XFS-ez-oYQ" firstAttribute="top" secondItem="FOm-Qy-zge" secondAttribute="top" id="0jq-qn-GFe"/>
@@ -468,6 +471,9 @@
                                     <constraint firstAttribute="trailing" secondItem="sWr-Qn-rg4" secondAttribute="trailing" id="zVs-Fh-Hzb"/>
                                     <constraint firstItem="KNI-p5-1pL" firstAttribute="centerX" secondItem="62u-xy-3IS" secondAttribute="centerX" id="zwU-CK-goT"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="3OZ-vW-qXb" id="FWk-d3-RdK"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -492,7 +498,7 @@
                         <outlet property="smallPictureImgView" destination="sqG-Ea-P14" id="Hit-Ol-yrs"/>
                         <outlet property="startTimeBtn" destination="lcf-Ra-oQY" id="S6f-eb-cMe"/>
                         <outlet property="toolBar" destination="QPB-Uu-fBY" id="RQL-DT-Q3C"/>
-                        <segue destination="y62-Tm-0St" kind="show" identifier="DetailToUserAddress" id="pwQ-Xf-ToL"/>
+                        <segue destination="JQf-0Y-BDJ" kind="show" identifier="DetailToUserAddress" id="pwQ-Xf-ToL"/>
                         <segue destination="U2A-Z9-Dpl" kind="show" identifier="DetailToPay" id="dcF-on-sjM"/>
                         <segue destination="d1X-YN-gco" kind="show" identifier="DetailToTalk" id="8Wx-KZ-4Zo"/>
                     </connections>
@@ -504,7 +510,7 @@
         <!--User Address View Controller-->
         <scene sceneID="8rg-uO-H6m">
             <objects>
-                <viewController id="U2A-Z9-Dpl" customClass="userAddressViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailToUserAddress" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U2A-Z9-Dpl" customClass="userAddressViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vcr-KW-WVk"/>
                         <viewControllerLayoutGuide type="bottom" id="0Y0-4f-SkJ"/>
@@ -514,6 +520,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTd-rU-0kz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -522,17 +529,17 @@
         <!--Pay View Controller-->
         <scene sceneID="Cnv-Xz-boG">
             <objects>
-                <viewController id="y62-Tm-0St" customClass="PayViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailToPay" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y62-Tm-0St" customClass="PayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9lt-wT-peG"/>
                         <viewControllerLayoutGuide type="bottom" id="Rzy-mP-22Q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uIs-cd-6Sy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjV-Hm-Kbl">
-                                <rect key="frame" x="0.0" y="20" width="375" height="222.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无锡原谅大酒店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iY-gV-1ar">
                                         <rect key="frame" x="25" y="10" width="121.5" height="21"/>
@@ -559,7 +566,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCh-tD-v2H">
-                                        <rect key="frame" x="25" y="196.5" width="69.5" height="21"/>
+                                        <rect key="frame" x="25" y="175" width="69.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -588,14 +595,14 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Sy-1o-ipS">
-                                <rect key="frame" x="0.0" y="242.5" width="375" height="424.5"/>
+                                <rect key="frame" x="0.0" y="201" width="375" height="402"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="88" id="XhW-As-3WS">
                                         <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XhW-As-3WS" id="vDD-Pd-bEk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -614,13 +621,35 @@
                             <constraint firstItem="Rzy-mP-22Q" firstAttribute="top" secondItem="7Sy-1o-ipS" secondAttribute="bottom" id="je5-Ki-xwI"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="6Td-jA-JWB"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIk-KL-b1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1759.2" y="143.47826086956522"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="53G-iZ-KMi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JQf-0Y-BDJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0aB-IN-mYA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="y62-Tm-0St" kind="relationship" relationship="rootViewController" id="i9e-Gt-5WB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3f-cy-r8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="820" y="143.47826086956522"/>
         </scene>
     </scenes>
     <resources>
+        <image name="07981E5B9270272BD11F1AA49EDF1D52" width="1920" height="1080"/>
         <image name="FCAFC95D850DDBB9F80562CACFD86C24" width="640" height="896"/>
         <image name="使用协议" width="11" height="11"/>
         <image name="酒店" width="32" height="25"/>

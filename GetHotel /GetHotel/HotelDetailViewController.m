@@ -8,7 +8,8 @@
 
 #import "HotelDetailViewController.h"
 
-@interface HotelDetailViewController (){
+
+@interface HotelDetailViewController ()<UIScrollViewDelegate>{
     NSInteger flag;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *hotelPictureImgView;
@@ -18,8 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *smallPictureImgView;
 @property (weak, nonatomic) IBOutlet UIButton *chooseHotelBtn;
-@property (weak, nonatomic) IBOutlet UILabel *inTimeLbl;
-@property (weak, nonatomic) IBOutlet UILabel *outTimeLbl;
+//@property (weak, nonatomic) IBOutlet UILabel *inTimeLbl;
+//@property (weak, nonatomic) IBOutlet UILabel *outTimeLbl;
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *chatingBtn;
@@ -42,13 +43,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self naviConfig];
+    [self naviConfig1];
+        // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)naviConfig1 {
+    //设置导航条标题文字
+    self.navigationItem.title = @"酒店预订";
+    //设置导航条的颜色（风格颜色）
+    [[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    self.navigationController.navigationBar.hidden =NO;
+    //实例化一个button
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    //设置button的位置大小
+    leftBtn.frame = CGRectMake(0, 0, 20, 20);
+    //设置背景图片
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    //给按钮添加事件
+    [leftBtn addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
 }
 -(void)setDefaultDateForButton{
     //初始化日期格式器
@@ -66,21 +85,7 @@
     [_startTimeBtn setTitle:dateStr forState:UIControlStateNormal];
     [_endTimeBtn setTitle:dateTomStr forState:UIControlStateNormal];
 }
-- (void)naviConfig {
-    //设置导航条标题文字
-    self.navigationItem.title = @"酒店预订";
-    //设置导航条的颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
-    //实例化一个button
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    //设置button的位置大小
-    leftBtn.frame = CGRectMake(0, 0, 20, 20);
-    //设置背景图片
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
-    //给按钮添加事件
-    [leftBtn addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
-}
+
 -(void)leftButtonAction:(UIButton *)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -171,7 +176,7 @@
 //结束日期按钮点击事件
 - (IBAction)endTimeAction:(UIButton *)sender forEvent:(UIEvent *)event {
     flag=1;
-    _toolBar.hidden=YES;
-    _datePicker.hidden=YES;
+    _toolBar.hidden=NO;
+    _datePicker.hidden=NO;
 }
 @end
