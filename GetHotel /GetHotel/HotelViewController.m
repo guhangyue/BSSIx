@@ -12,7 +12,7 @@
 #import "HotelModel.h"
 
 @interface HotelViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
-    NSInteger page;
+    NSInteger pageNum;
     NSInteger perPage;
     NSInteger totalPage;
     BOOL isLoading;
@@ -307,13 +307,13 @@
 }
 
 - (void)refreshPage {
-    page = 1;
+    pageNum = 1;
     [self networkRequest];
 }
 //执行网络请求
 - (void)networkRequest{
     NSLog(@"123");
-         NSDictionary *para = @{@"page" : @(page), @"perPage" : @(perPage),@"city": _cityBtn.titleLabel.text};
+         NSDictionary *para = @{@"pageNum" : @(pageNum), @"perSize" : @(perPage),@"startId": @1,@"priceId":@1,@"sortingId":@1,@"inTime":@"2017-08-26",@"outTime":@"2017-08-27",@"wxlongitude":@"31.568",@"wxlatitude":@"120.299"};
     NSLog(@"456");
         [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             NSLog(@"789");
@@ -363,9 +363,9 @@
     //判断是不是最后一行细胞将要出现
     if (indexPath.row == _arr.count -1) {
         //判断是否有下一页存在
-        if (page <totalPage) {
+        if (pageNum <totalPage) {
             //在这里执行上拉翻页的数据操作
-            page ++;
+            pageNum ++;
                   }
     }
 }
