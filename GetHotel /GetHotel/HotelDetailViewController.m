@@ -56,9 +56,7 @@
     //设置导航条标题文字
     self.navigationItem.title = @"酒店预订";
     //设置导航条的颜色（风格颜色）
-    [[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    self.navigationController.navigationBar.hidden =NO;
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
     //实例化一个button
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     //设置button的位置大小
@@ -100,11 +98,11 @@
 */
 
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    
+    [self performSegueWithIdentifier:@"DetailToPay" sender:nil];
     //获取要跳转的页面实例
-    UINavigationController *detailToPay=[Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"DetailToPay"];
+//    UINavigationController *detailToPay=[Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"DetailToPay"];
     //执行跳转
-    [self presentViewController:detailToPay animated:YES completion:nil];
+//    [self presentViewController:detailToPay animated:YES completion:nil];
 //    if ([Utilities loginCheck]) {
     //        获取要跳转的页面实例
 //    UINavigationController *detailToUserAddress=[Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"DetailToUserAddress"];
@@ -115,10 +113,11 @@
 //    }
 }
 - (IBAction)chatingAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self performSegueWithIdentifier:@"DetailToTalk" sender:nil];
     //获取要跳转的页面实例
-    UINavigationController *detailToTalk=[Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"DetailToTalk"];
+//    UINavigationController *detailToTalk=[Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"DetailToTalk"];
     //执行跳转
-    [self presentViewController:detailToTalk animated:YES completion:nil];
+//    [self presentViewController:detailToTalk animated:YES completion:nil];
     //    if ([Utilities loginCheck]) {
     //        获取要跳转的页面实例
     //    UINavigationController *detailToUserAddress=[Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"DetailToUserAddress"];
@@ -130,10 +129,11 @@
 }
 
 - (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self performSegueWithIdentifier:@"DetailToUserAddress" sender:nil];
     //获取要跳转的页面实例
-    UINavigationController *detailToUserAddress=[Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"DetailToUserAddress"];
+//    UINavigationController *detailToUserAddress=[Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"DetailToUserAddress"];
     //执行跳转
-    [self presentViewController:detailToUserAddress animated:YES completion:nil];
+//    [self presentViewController:detailToUserAddress animated:YES completion:nil];
     //    if ([Utilities loginCheck]) {
     //        获取要跳转的页面实例
     //    UINavigationController *detailToUserAddress=[Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"DetailToUserAddress"];
