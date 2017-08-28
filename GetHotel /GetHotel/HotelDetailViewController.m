@@ -67,6 +67,9 @@
     [leftBtn addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
 }
+-(void)leftButtonAction:(UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)setDefaultDateForButton{
     //初始化日期格式器
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
@@ -84,9 +87,7 @@
     [_endTimeBtn setTitle:dateTomStr forState:UIControlStateNormal];
 }
 
--(void)leftButtonAction:(UIButton *)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 /*
 #pragma mark - Navigation
 
