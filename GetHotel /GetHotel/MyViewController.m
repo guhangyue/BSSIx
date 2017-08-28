@@ -11,15 +11,15 @@
 @interface MyViewController ()<CLLocationManagerDelegate>{
     BOOL firstVisit;
 }
-- (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (strong,nonatomic) NSDictionary *cities;
+@property (strong, nonatomic) NSArray *keys;
 
 @property (weak, nonatomic) IBOutlet UIButton *cityBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *myArr;
-@property (strong, nonatomic) NSMutableArray *arr;
+//@property (strong, nonatomic) NSMutableArray *arr;
 @property(strong,nonatomic) CLLocationManager *locMgr;
 @property(strong,nonatomic) CLLocation *location;
+- (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @end
 
 @implementation MyViewController
@@ -27,10 +27,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _myArr = [NSMutableArray new];
-    _arr = [NSMutableArray new];
+    //_arr = [NSMutableArray new];
     [self naviConfig];
     [self uiLayout];
+    [self dataInitialize];
 
 }
 //每次将要离开这个页面的时候
@@ -92,6 +92,28 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];//用push返回上一页
 }
+-(void)dataInitialize{
+    firstVisit = YES;
+    //创建文件管理器
+    NSFileManager *fileMgr=[NSFileManager defaultManager];
+    //获取要读取的文件的路经
+    NSString *filePath= [[NSBundle mainBundle] pathForResource:@"Cities" ofType:@"plist"];
+    //判断路径下是否存在文件
+    if ([fileMgr fileExistsAtPath:filePath]) {
+        //将文件内容读取为对应的格式
+        NSDictionary *fileContent= [NSDictionary dictionaryWithContentsOfFile:filePath];
+        //判断读取文件是否损坏
+        if (fileContent) {
+            NSLog(@"fileContent = %@",fileContent);
+            _cities =fileContent;
+            //提前字典中所有的键
+            NSArray *rawkeys=[fileContent allKeys];
+            //根据(localizedStandCompare:)（本地化升序）对rawkeys排序
+            _keys = [rawkeys sortedArrayUsingSelector:@selector(localizedStandardCompare:)];
+        }
+    }
+}
+
 /*
 #pragma mark - Navigation
 
@@ -103,11 +125,11 @@
 */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return _myArr.count;
+    return _keys.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //获取当前正在渲染的组的名称
-    NSString *key = _myArr[section];
+    NSString *key = _keys[section];
     //根据组的名称，作为键来查询到对应的值（整个值就是这一组城市对应的城市数组）
     NSArray *sectionCities = _cities[key];
     //返回这一组城市的个数来作为行数
@@ -115,7 +137,7 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityCell" forIndexPath:indexPath];
-    NSString *key = _myArr[indexPath.section];
+    NSString *key = _keys[indexPath.section];
     NSArray *sectionCities = _cities[key];
     NSDictionary*city = sectionCities[indexPath.row];
     cell.textLabel.text = city[@"name"];
@@ -125,7 +147,7 @@
 
 //设置组的标题文字
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return _myArr[section];
+    return _keys[section];
 }
 //设置section header的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -138,7 +160,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSString *key = _myArr[indexPath.section];
+    NSString *key = _keys[indexPath.section];
     NSArray *sectionCities = _cities[key];
     NSDictionary*city = sectionCities[indexPath.row];
     [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:[NSNotification notificationWithName:@"ResetHome" object:city[@"name"]] waitUntilDone:YES];
@@ -147,7 +169,7 @@
 }
 //设置右侧快捷键栏
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
-    return _myArr;
+    return _keys;
 }
 
 
