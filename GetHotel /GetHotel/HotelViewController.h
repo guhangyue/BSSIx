@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HotelViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *cityBtn;
 
 
 @end

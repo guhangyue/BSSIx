@@ -12,6 +12,7 @@
 #import "HotelModel.h"
 
 @interface HotelViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
+    NSInteger ATime;
     NSInteger pageNum;
     NSInteger perPage;
     NSInteger totalPage;
@@ -22,7 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *arr;
 @property(strong,nonatomic) CLLocationManager *locMgr;
 @property (weak, nonatomic) IBOutlet UITableView *HotelTabView;
-@property (weak, nonatomic) IBOutlet UIButton *cityBtn;
+
 @property(strong,nonatomic) CLLocation *location;
 @property (weak, nonatomic) IBOutlet UIImageView *FirstImage;
 @property (weak, nonatomic) IBOutlet UIImageView *SeconImage;
@@ -43,8 +44,9 @@
 @property (strong, nonatomic) NSMutableArray *adArr;
 - (IBAction)cancelAction:(UIBarButtonItem *)sender;
 - (IBAction)confirmAction:(UIBarButtonItem *)sender;
-
-
+@property (strong, nonatomic) NSTimer *timer; //控制轮播
+@property (nonatomic) NSTimeInterval inTimeIn; //入住时间戳
+@property (nonatomic) NSTimeInterval outTimeIn;//离店时间戳
 @end
 
 @implementation HotelViewController
@@ -57,7 +59,29 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
     [self networkRequest];
 }
-
+//每次将要来到这个页面的时候
+//控制广告轮播
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self locationStart];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(changeImage) userInfo:nil repeats:YES];
+}
+//每次到达这个页面的时候
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //[self locationStart];
+}
+//每次将要离开这个页面的时候
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_timer invalidate];
+    [_locMgr stopUpdatingLocation];
+}
+//每次离开这个页面的时候
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    //获得当前页面导航控制器所维系的关于导航关系的数组，通过判断该数组中是否包含自己来得知当前操作是离开本页面还是退出本页面
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -72,29 +96,12 @@
     // Pass the selected object to the new view controller.
 }
 */
-//每次将要来到这个页面的时候
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
 
-//每次到达这个页面的时候
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    //[self locationStart];
-}
 
-//每次将要离开这个页面的时候
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    //关掉开关
-   // [_locMgr stopUpdatingLocation];
-}
 
-//每次离开这个页面的时候
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    //获得当前页面导航控制器所维系的关于导航关系的数组，通过判断该数组中是否包含自己来得知当前操作是离开本页面还是退出本页面
-}
+
+#pragma mark - loction
+
 //这个方法专门处理定位的基本设置
 -(void)locationConfig{
     _locMgr=[CLLocationManager new];
@@ -212,7 +219,7 @@
         
     }
 }
-
+#pragma mark - naviConfig
 //这个方法专门做导航条的控制
 - (void)naviConfig {
     //设置导航条标题文字
@@ -272,6 +279,7 @@
 }
 //这个方法专门做数据的处理
 - (void)dataInitialize {
+    _HotelTabView.tableFooterView = [UIView new];
     BOOL appInit = NO;
     
     if ([[Utilities getUserDefaults:@"UserCity"] isKindOfClass:[NSNull class]]) {
@@ -299,9 +307,27 @@
     isLoading = NO;
     _arr = [NSMutableArray new];
     _adArr = [NSMutableArray new];
-    //创建菊花膜
-    _aiv = [Utilities getCoverOnView:self.view];
-    [self refreshPage];
+//    //创建菊花膜
+//    _aiv = [Utilities getCoverOnView:self.view];
+//    [self refreshPage];
+}
+-(void)setNowTime{
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"MM-dd";
+    NSDate *today = [NSDate date];
+    NSDate *tomorrow = [NSDate dateTomorrow];
+    NSDateFormatter *pFormatter = [NSDateFormatter new];
+    pFormatter.dateFormat = @"yyyy-MM-dd";
+    [_date1 setTitle:[NSString stringWithFormat:@"入住%@", [formatter stringFromDate:today]] forState:UIControlStateNormal];
+    [_date2Btn setTitle:[NSString stringWithFormat:@"离店%@", [formatter stringFromDate:tomorrow]] forState:UIControlStateNormal];
+    [_datePicker setMinimumDate:today];
+    _outTimeIn = [tomorrow timeIntervalSince1970InMilliSecond];
+    
+    _inTimeIn = [today timeIntervalSince1970InMilliSecond];
+    _inTime = [NSString stringWithFormat:@"入住%@", [formatter stringFromDate:today]];
+    _outTime = [NSString stringWithFormat:@"离店%@", [formatter stringFromDate:tomorrow]];
+
+
 }
 - (void)setADImage {
     NSMutableArray *urlArr = [NSMutableArray new];
@@ -317,6 +343,38 @@
     [_SeconView sd_setImageWithURL:[NSURL URLWithString:urlArr[1]] placeholderImage:[UIImage imageNamed:@"酒店"]];
     [_ThirdView sd_setImageWithURL:[NSURL URLWithString:urlArr[2]] placeholderImage:[UIImage imageNamed:@"酒店"]];
 }
+//开始拖拽的代理方法，在此方法中暂停定时器。
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    //NSLog(@"正在拖拽视图，所以需要将自动播放暂停掉");
+    //setFireDate：设置定时器在什么时间启动
+    //[NSDate distantFuture]:将来的某一时刻
+    [_timer setFireDate:[NSDate distantFuture]];
+}
+
+//视图静止时（没有人在拖拽），开启定时器，让自动轮播
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    //视图静止之后，过1.5秒在开启定时器
+    //[NSDate dateWithTimeInterval:1.5 sinceDate:[NSDate date]]  返回值为从现在时刻开始 再过1.5秒的时刻。
+    //NSLog(@"开启定时器");
+    [_timer setFireDate:[NSDate dateWithTimeInterval:2 sinceDate:[NSDate date]]];
+}
+
+
+
+
+- (void)changeImage {
+    NSInteger page = [self scrollCheck:_scrollView];
+    [_scrollView scrollRectToVisible:CGRectMake(UI_SCREEN_W *(page+1), 0, UI_SCREEN_W, 150) animated:YES];
+}
+- (NSInteger)scrollCheck: (UIScrollView *)scrollView {
+    NSInteger page = scrollView.contentOffset.x / scrollView.frame.size.width;
+    if (page == 4) {
+        page = -1;
+    }
+    //NSLog(@"%ld",(long)page);
+    return page;
+}
+
 
 - (void)refreshPage {
     pageNum = 1;
@@ -325,11 +383,10 @@
 //执行网络请求
 - (void)networkRequest{
     NSLog(@"123");
-         NSDictionary *para = @{@"pageNum" : @(pageNum), @"perSize" : @(perPage),@"startId": @1,@"priceId":@1,@"sortingId":@1,@"inTime":@"2017-08-26",@"outTime":@"2017-08-27",@"wxlongitude":@"31.568",@"wxlatitude":@"120.299"};
+         NSDictionary *para = @{@"city_name":_cityBtn.titleLabel.text,@"pageNum" : @1, @"perSize" : @10,@"startId": @1,@"priceId":@1,@"sortingId":@1,@"inTime":_date1.titleLabel.text,@"outTime":_date2Btn.titleLabel.text,@"wxlongitude":@"31.568",@"wxlatitude":@"120.299"};
     NSLog(@"456");
-        [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kJson success:^(id responseObject) {
             NSLog(@"789");
-            NSLog(@"responseObject = %@",responseObject);
             [_aiv stopAnimating];
             if ([responseObject[@"result"] integerValue] == 1) {
                 if (_adArr.count == 0) {
@@ -338,6 +395,7 @@
                     HotelModel *ad = [[HotelModel alloc] initWithDictForAD:dict];
                     [_adArr addObject:ad];
                 }
+                    [self setADImage];
                 }
                 NSArray *hotel = responseObject[@"content"][@"hotel"][@"list"];
                 [_arr removeAllObjects];
@@ -352,6 +410,8 @@
             
         }failure:^(NSInteger statusCode, NSError *error) {
             [_aiv stopAnimating];
+            [Utilities popUpAlertViewWithMsg:@"网络不稳定" andTitle:nil onView:self];
+
         }];
 }
 - (void)endAnimation {
@@ -413,13 +473,55 @@
 - (IBAction)date1:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 - (IBAction)date1Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    _datePicker.hidden = YES;
+    _toolBar.hidden = YES;
 }
 - (IBAction)date2Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    _datePicker.hidden = YES;
+    _toolBar.hidden = YES;
 }
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
+    //拿到当前datepicker选择的事件
+    NSDate *date =  _datePicker.date;
+    //初始化一个日期格式器
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"MM-dd";
+    NSString *theDate = [formatter stringFromDate:date];
+    NSTimeInterval Time = [date timeIntervalSince1970InMilliSecond];
+    NSDateFormatter *pFormatter = [NSDateFormatter new];
+    pFormatter.dateFormat = @"yyyy-MM-dd";
+    if (ATime == 0) {
+        if (Time > _outTimeIn) {
+            [Utilities popUpAlertViewWithMsg:@"请选择正确的离店时间" andTitle:nil  onView:self];
+            return;
+        }
+        _inTimeIn = Time;
+        _inTime = [NSString stringWithFormat:@"入住%@",theDate];
+//        [_a setTitle:_inTime forState:UIControlStateNormal];
+        //        [_outTimeBtn setTitle:[NSString stringWithFormat:@"离店%@", theDate] forState:UIControlStateNormal];
+        //        [_datePicker setMinimumDate:date];
+        //_date1 = [pFormatter stringFromDate:date];
+    }
+    else {
+        if (Time < _inTimeIn) {
+            
+            return;
+        }
+        _outTimeIn = Time;
+        _outTime = [NSString stringWithFormat:@"离店%@",theDate];
+        
+    }
+    
+    _datePicker.hidden = YES;
+    _toolBar.hidden = YES;
+    [self networkRequest];
+
 }
 
 - (IBAction)confirmAction:(UIBarButtonItem *)sender {
+    _toolBar.hidden= YES;
+    _datePicker.hidden=YES;
+    [self networkRequest];
 }
 @end
 

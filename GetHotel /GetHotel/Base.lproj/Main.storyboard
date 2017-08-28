@@ -247,6 +247,7 @@
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="date1:forEvent:" destination="u94-BX-hOg" eventType="touchUpInside" id="yDj-Lt-2wP"/>
                                     <action selector="date1Action:forEvent:" destination="u94-BX-hOg" eventType="touchUpInside" id="fbW-Pk-Jt1"/>
                                 </connections>
                             </button>
@@ -413,7 +414,7 @@
                         <outlet property="SeconView" destination="Dw8-fB-iEh" id="AyX-UX-y5R"/>
                         <outlet property="ThirdImage" destination="Uo8-FY-2W4" id="JRt-ah-S1K"/>
                         <outlet property="ThirdView" destination="Uo8-FY-2W4" id="aV3-UI-sOy"/>
-                        <outlet property="cityBtn" destination="Nvf-t0-ZC8" id="5xC-nV-gFc"/>
+                        <outlet property="cityBtn" destination="Nvf-t0-ZC8" id="1ol-hz-X9l"/>
                         <outlet property="date1" destination="Alv-Ur-vCU" id="OHb-j5-7OA"/>
                         <outlet property="date2Btn" destination="Ea2-ye-7T6" id="7co-hK-sbt"/>
                         <outlet property="datePicker" destination="Bsy-p6-sWR" id="731-Ea-zb2"/>
