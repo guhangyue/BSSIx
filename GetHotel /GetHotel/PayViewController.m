@@ -31,13 +31,18 @@
     //设置导航条的颜色（风格颜色）
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
     //实例化一个button
-    UIBarButtonItem *barBtn5=[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonAction:)];
-    self.navigationItem.leftBarButtonItem=barBtn5;
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    //设置button的位置大小
+    leftBtn.frame = CGRectMake(0, 0, 20, 20);
+    //设置背景图片
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    //给按钮添加事件
+    [leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
 }
--(void)leftButtonAction:(UIBarButtonItem *)sender{
+- (void)backAction {
+    [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
-     HotelDetailViewController *senCon1=[[HotelDetailViewController alloc]init];
-    [self.navigationController pushViewController:senCon1 animated:YES];
 }
 /*
 #pragma mark - Navigation
