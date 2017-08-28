@@ -30,8 +30,19 @@
 @property (weak, nonatomic) IBOutlet UIImageView *FirstView;
 @property (weak, nonatomic) IBOutlet UIImageView *SeconView;
 @property (weak, nonatomic) IBOutlet UIImageView *ThirdView;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet UIButton *date1;
+- (IBAction)date1Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *date2Btn;
+- (IBAction)date2Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) NSString *inTime; //按钮上显示的入住时间
+@property (strong, nonatomic) NSString *outTime;// 按钮上显示的离店时间
 
 @property (strong, nonatomic) NSMutableArray *adArr;
+- (IBAction)cancelAction:(UIBarButtonItem *)sender;
+- (IBAction)confirmAction:(UIBarButtonItem *)sender;
 
 
 @end
@@ -43,6 +54,7 @@
     // Do any additional setup after loading the view.
     [self dataInitialize];
     [self locationConfig];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
     [self networkRequest];
 }
 
@@ -398,5 +410,16 @@
     
 }
 
+- (IBAction)date1:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+- (IBAction)date1Action:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+- (IBAction)date2Action:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+- (IBAction)cancelAction:(UIBarButtonItem *)sender {
+}
+
+- (IBAction)confirmAction:(UIBarButtonItem *)sender {
+}
 @end
 
