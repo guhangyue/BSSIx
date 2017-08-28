@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -59,6 +58,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginAction:forEvent:" destination="otw-uu-CLT" eventType="touchUpInside" id="Lmy-Kn-gri"/>
+                                            <segue destination="HC4-pV-rzr" kind="show" id="UVa-bt-luJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -82,7 +82,7 @@
                                 <rect key="frame" x="0.0" y="200" width="375" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="vaV-XH-6Se" customClass="MyinfoTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myInfoCell" rowHeight="52" id="vaV-XH-6Se" customClass="MyinfoTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vaV-XH-6Se" id="P3M-nc-nWm">
@@ -151,6 +151,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEF-17-RXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="156" y="-69.715142428785612"/>
+        </scene>
+        <!--Sign-->
+        <scene sceneID="WLc-cJ-C4V">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sign" id="HC4-pV-rzr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eiL-5o-yaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="726" y="-145"/>
         </scene>
         <!--我的航空-->
         <scene sceneID="vtJ-r9-XZt">
@@ -467,11 +475,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="143" id="I0I-dh-hI1">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="143" id="I0I-dh-hI1" customClass="OrderTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="143"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I0I-dh-hI1" id="Rg5-dv-LZS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="142.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="希尔顿酒店套房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bot-pc-mHQ">
@@ -563,18 +571,30 @@
                                                         <constraint firstItem="hmx-s2-WIz" firstAttribute="leading" secondItem="O9t-vq-XsZ" secondAttribute="leading" id="wLx-nY-JwZ"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="endDateLabel" destination="jfX-SB-Ld2" id="XP7-Xn-aTw"/>
+                                                    <outlet property="hotelAddressLAbel" destination="3Sq-RB-aTK" id="4YQ-tN-H7B"/>
+                                                    <outlet property="hotelImg" destination="72V-c2-xfQ" id="xI0-YN-X5P"/>
+                                                    <outlet property="hotelPeopleNumLabel" destination="O9t-vq-XsZ" id="Sdp-BV-Wf1"/>
+                                                    <outlet property="hotelTypeLabel" destination="Bot-pc-mHQ" id="r8X-2A-CvH"/>
+                                                    <outlet property="startDateLabel" destination="hmx-s2-WIz" id="3SP-WQ-wPm"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="FV0-da-DvJ" id="8Ad-4v-Z7J"/>
+                                            <outlet property="delegate" destination="FV0-da-DvJ" id="DSt-Ai-Ob0"/>
+                                        </connections>
                                     </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pUx-r6-hQT" userLabel="123">
                                         <rect key="frame" x="375" y="0.0" width="375" height="543"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="141" id="N6z-Ko-uet">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="141" id="N6z-Ko-uet" customClass="AvailableTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="141"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N6z-Ko-uet" id="1wg-Oz-oId">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="141"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="希尔顿酒店套房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iF8-NF-l11">
@@ -668,18 +688,30 @@
                                                         <constraint firstItem="pKS-XI-mCv" firstAttribute="leading" secondItem="dN9-cz-Ubd" secondAttribute="trailing" constant="10" id="yMb-1K-IG6"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="endDateLabel" destination="mTY-jy-oYf" id="5hK-nb-xWo"/>
+                                                    <outlet property="hotelAddressLabel" destination="pKS-XI-mCv" id="2f9-K4-JnM"/>
+                                                    <outlet property="hotelImg" destination="YUy-cs-U4K" id="dLC-xy-Ccq"/>
+                                                    <outlet property="hotelPeopleNumLabel" destination="Zsz-ea-Tik" id="WBt-fw-9P6"/>
+                                                    <outlet property="hotelTypeLabel" destination="iF8-NF-l11" id="Wkc-zZ-Y1K"/>
+                                                    <outlet property="startDateLabel" destination="Y2e-cD-7Zx" id="rnV-lL-hnp"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="FV0-da-DvJ" id="KUp-oN-Lft"/>
+                                            <outlet property="delegate" destination="FV0-da-DvJ" id="B54-TM-AX7"/>
+                                        </connections>
                                     </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="145" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P0T-3v-4jh" userLabel="456">
                                         <rect key="frame" x="750" y="0.0" width="375" height="543"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="145" id="O8c-VE-AwC">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="145" id="O8c-VE-AwC" customClass="ExpiredTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="145"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O8c-VE-AwC" id="eqM-hO-PWF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="144.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="希尔顿酒店套房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yt-Qd-Dxv">
@@ -773,8 +805,20 @@
                                                         <constraint firstItem="kxp-Gv-pND" firstAttribute="top" secondItem="hBY-zu-Tqs" secondAttribute="top" id="v0d-vV-v5f"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="endDateLabel" destination="J9N-EQ-xwF" id="gK7-LB-n8b"/>
+                                                    <outlet property="hotelAddressLabel" destination="kxp-Gv-pND" id="5a8-sg-5OG"/>
+                                                    <outlet property="hotelImg" destination="Zs6-2H-gh4" id="jA8-4h-tTh"/>
+                                                    <outlet property="hotelPeopleNumLabel" destination="Bgz-HC-NRn" id="Q7v-vS-qv8"/>
+                                                    <outlet property="hotelTypeLabel" destination="2Yt-Qd-Dxv" id="LxQ-fL-fgT"/>
+                                                    <outlet property="startDateLabel" destination="ZTH-iV-pLu" id="Vqm-ac-NII"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="FV0-da-DvJ" id="zwJ-EO-drY"/>
+                                            <outlet property="delegate" destination="FV0-da-DvJ" id="pe3-0Z-pni"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -807,15 +851,22 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="AllOrdersTableView" destination="GAR-Ay-DuZ" id="x41-yv-Kxt"/>
+                        <outlet property="AvailableTableView" destination="pUx-r6-hQT" id="AMu-sG-RCf"/>
+                        <outlet property="ExpiredTableView" destination="P0T-3v-4jh" id="lUR-3U-lLW"/>
+                        <outlet property="scrollView" destination="Q9y-vb-dfb" id="GAr-ru-uqx"/>
+                        <outlet property="titleView" destination="GSl-7X-4qT" id="f4r-uV-fXi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4YW-lP-Xhf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="925.60000000000002" y="799.2503748125938"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--我的-->
         <scene sceneID="zGW-WD-pef">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u7E-pS-B24" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="my" title="我的" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u7E-pS-B24" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NTy-5Z-Cyw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

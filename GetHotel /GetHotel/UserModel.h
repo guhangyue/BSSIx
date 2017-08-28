@@ -10,7 +10,7 @@
 
 @interface UserModel : NSObject
 @property(nonatomic)NSInteger state;
-
+@property(strong,nonatomic)NSString*memberId;
 @property(strong,nonatomic)NSString *gender;
 
 @property(nonatomic)NSInteger grade;

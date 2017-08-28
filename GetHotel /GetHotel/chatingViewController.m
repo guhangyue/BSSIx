@@ -1,18 +1,18 @@
 //
-//  PayViewController.m
+//  chatingViewController.m
 //  GetHotel
 //
-//  Created by admin on 2017/8/24.
+//  Created by admin1 on 2017/8/27.
 //  Copyright © 2017年 com. All rights reserved.
 //
 
-#import "PayViewController.h"
+#import "chatingViewController.h"
 
-@interface PayViewController ()
+@interface chatingViewController ()
 
 @end
 
-@implementation PayViewController
+@implementation chatingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,7 +26,7 @@
 }
 //设置导航栏样式
 -(void)setNavigationItem{
-    self.navigationItem.title = @"支付";
+    self.navigationItem.title = @"微聊";
     //设置导航条的颜色（风格颜色）
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
     //实例化一个button

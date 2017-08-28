@@ -13,6 +13,7 @@
 {
     self = [super init];
     if (self) {
+        _memberId=[Utilities nullAndNilCheck:dict[@"memberId"] replaceBy:@"0"];
         _grade=[[Utilities nullAndNilCheck:dict[@"grade"] replaceBy:0]integerValue ];
         _headImg=[Utilities nullAndNilCheck:dict[@"head_img"] replaceBy:@""];
         _userId=[Utilities nullAndNilCheck:dict[@"id"] replaceBy:0];

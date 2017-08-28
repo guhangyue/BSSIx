@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _myInfoArr = @[@{@"leftIcon":@"酒店详情小图标",@"title":@"我的酒店"},@{@"leftIcon":@"航空",@"title":@"我的航空"},@{@"leftIcon":@"我的消息",@"title":@"我的消息"},@{@"leftIcon":@"设置",@"title":@"账户设置"},@{@"leftIcon":@"使用协议",@"title":@"使用协议"},@{@"leftIcon":@"联系客服",@"title":@"联系客服"}];
-    
+    [self naviConfig];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +53,25 @@
         _nameLabel.text=@"游客";
     
     }
+}
+//这个方法专门做导航条的控制
+- (void)naviConfig{
+    //设置导航条标题的文字
+    self.navigationItem.title = @"城市列表";
+    //设置导航条的颜色（风格颜色）
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(24, 124, 236);
+    //设置导航条标题颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否被隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
+    //为导航条左上角创建一个按钮
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = left;
 }
 
 /*
@@ -85,7 +104,7 @@
 }
 //设置组的底部视图高度
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 0) {
+    if (section == 2) {
         return 5.f;
     }
     return 1.f;
@@ -121,7 +140,7 @@
         break;
      }
     }else{
-        UINavigationController *signNavi=[Utilities getStoryboardInstance:@"Login" byIdentity:@"SignNavi"];
+        UINavigationController *signNavi=[Utilities getStoryboardInstance:@"Sign" byIdentity:@"SignNavi"];
         //执行跳转
         [self presentViewController:signNavi animated:YES completion:nil];
     }
