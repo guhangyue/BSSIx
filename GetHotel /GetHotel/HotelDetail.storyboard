@@ -471,6 +471,7 @@
                                 <date key="date" timeIntervalSinceReferenceDate="525598811.47540998">
                                     <!--2017-08-28 07:40:11 +0000-->
                                 </date>
+                                <locale key="locale" localeIdentifier="zh-Hans"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNE-Dg-lNj">
                                 <rect key="frame" x="187.5" y="617" width="187.5" height="50"/>
