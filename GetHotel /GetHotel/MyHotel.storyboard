@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u7E-pS-B24">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u7E-pS-B24">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,7 +25,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5H-tp-eus">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="小葵" translatesAutoresizingMaskIntoConstraints="NO" id="Ofy-9O-P6f">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像" translatesAutoresizingMaskIntoConstraints="NO" id="Ofy-9O-P6f">
                                         <rect key="frame" x="15" y="85" width="90" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="V5W-fL-03r"/>
@@ -884,7 +884,7 @@
     </scenes>
     <resources>
         <image name="ic_unlock" width="16" height="16"/>
-        <image name="小葵" width="113" height="113"/>
+        <image name="头像" width="100" height="100"/>
         <image name="联系客服" width="50" height="50"/>
         <image name="酒店" width="32" height="25"/>
         <image name="酒店详情小图标" width="32" height="25"/>
