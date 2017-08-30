@@ -279,6 +279,7 @@
 }
 //这个方法专门做数据的处理
 - (void)dataInitialize {
+    
     _HotelTabView.tableFooterView = [UIView new];
     BOOL appInit = NO;
     
@@ -406,6 +407,7 @@
                     [_arr addObject:hotelModel];
                     
                 }
+                NSLog(@"%ld",_arr.count);
                 [_HotelTabView reloadData];
             }
             
@@ -445,8 +447,10 @@
 //设置每一组中每一行的cell（细胞）长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //根据某个具体名字找到该名字在页面上对应的细胞
+    //NSLog(@"%ld",_arr.count);
     HotelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotelCell" forIndexPath:indexPath];
     //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
+    
     HotelModel *hotel = _arr[indexPath.row];
     cell.HotelName.text = hotel.hotelName;
     cell.HotelLocation.text = hotel.hotelLocation;
