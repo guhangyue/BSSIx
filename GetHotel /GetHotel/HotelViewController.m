@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "HotelTableViewCell.h"
 #import "HotelModel.h"
+#import "HotelDetailViewController.h"
 
 @interface HotelViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
     NSInteger ATime;
@@ -465,15 +466,43 @@
 }
 //设置每一组中每一行的cell（细胞）被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //判断当前tableView是否为_activityTableView(这个条件判断常用在一个页面中有多个tableView的时候)
-    //if ([tableView isEqual:_activityTableView]){
-        //取消选中
-      //  [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //}
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HotelModel *hotelID = _arr[indexPath.row];
-    /////////////////////////////////////////////////////////
-    //DetailViewController *detailVC = [Utilities getStoryboardInstance:@"Deatil" byIdentity:@"reservation"];
+    HotelDetailViewController *detailVC = [Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"1"];
+     [self.navigationController pushViewController:detailVC animated:YES];
+//    if (tableView == _selectTableView) {
+//        [_c setTitle:_sorts[indexPath.row] forState:UIControlStateNormal];
+//        switch (indexPath.row) {
+//            case 0:
+//                _SortId = @"1";
+//                break;
+//            case 1:
+//                _SortId = @"2";
+//                break;
+//            case 2:
+//                _SortId = @"3";
+//                break;
+//            default:
+//                _SortId = @"4";
+//                break;
+//        }
+//        _selectBView.hidden = YES;
+//        [self requestAll];
+//        return;
+//    }
+//    AAndHModel *hotelID = _hotelArr[indexPath.row];
+//    DetailViewController *detailVC = [Utilities getStoryboardInstance:@"Deatil" byIdentity:@"reservation"];
+//    [[StorageMgr singletonStorageMgr] removeObjectForKey:@"hotelId"];
+//    [[StorageMgr singletonStorageMgr] addKey:@"hotelId" andValue:@(hotelID.hotelId)];
+//    [[StorageMgr singletonStorageMgr] removeObjectForKey:@"customInTime"];
+//    [[StorageMgr singletonStorageMgr] addKey:@"customInTime" andValue:_inTime];
+//    [[StorageMgr singletonStorageMgr] removeObjectForKey:@"customOutTime"];
+//    [[StorageMgr singletonStorageMgr] addKey:@"customOutTime" andValue:_outTime];
+//    //UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:detailVC];
+//    //[self presentViewController:nc animated:YES completion:nil];
+//    // detailVC.hotelId = hotelID.hotelId;
+//    NSLog(@"%@",detailVC.hotelid);
+//    
+//    [self.navigationController pushViewController:detailVC animated:YES];
     
 }
 

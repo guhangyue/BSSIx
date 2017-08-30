@@ -46,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self naviConfig1];
+    [self getimage];
         // Do any additional setup after loading the view.
     
 }
@@ -66,14 +67,14 @@
         CGFloat imagew = [[UIScreen mainScreen] bounds].size.width;
         CGFloat imageh = scrollSize.height;
         imageview.frame = CGRectMake(imagex, imagey, imagew, imageh);
-        NSString *imagestr = [NSString stringWithFormat:@"2%d",i+1];
+        NSString *imagestr = [NSString stringWithFormat:@"1%d",i+1];
         imageview.image = [UIImage imageNamed:imagestr];
         [_scrollView1 addSubview:imageview];
     }
     _scrollView1.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 4, 0);
     _scrollView1.showsVerticalScrollIndicator = NO;
     _scrollView1.backgroundColor = [UIColor grayColor];
-    self.scrollView1.delegate = self;
+   // self.scrollView1.delegate = self;
     _page = [[UIPageControl alloc] init];
     _page.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2 + 150, [[UIScreen mainScreen] bounds].size.height/6 +35, 10, 10);
     _page.numberOfPages = 4;

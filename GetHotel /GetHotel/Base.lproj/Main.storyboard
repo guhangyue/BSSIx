@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FEA-0d-OoA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FEA-0d-OoA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -310,14 +310,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGD-BL-8jG">
-                                                    <rect key="frame" x="264" y="25" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <segue destination="hag-1R-RW9" kind="show" id="aHH-JG-paL"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hWW-lp-s0M" firstAttribute="leading" secondItem="sao-7W-LBf" secondAttribute="leading" id="8Ek-Uk-4Ds"/>
@@ -336,6 +328,7 @@
                                             <outlet property="hotelDistance" destination="hWW-lp-s0M" id="zn4-bN-AjQ"/>
                                             <outlet property="hotelImage" destination="jzE-tY-Ky2" id="Gm1-VI-raa"/>
                                             <outlet property="hotelMoney" destination="FAf-u8-yPx" id="M1i-lP-dFa"/>
+                                            <segue destination="hag-1R-RW9" kind="show" identifier="HotelToDetail" id="qX4-Qi-BZy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -408,7 +401,7 @@
                             <constraint firstItem="iib-5S-VOb" firstAttribute="leading" secondItem="Ea2-ye-7T6" secondAttribute="trailing" id="xrE-eN-ZNL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="VMP-Rk-Q7t"/>
+                    <tabBarItem key="tabBarItem" title="酒店" image="电话" id="VMP-Rk-Q7t"/>
                     <connections>
                         <outlet property="FirstImage" destination="e2l-74-eFf" id="Vf2-p0-LHI"/>
                         <outlet property="FirstView" destination="e2l-74-eFf" id="tUJ-4v-UMb"/>
@@ -466,11 +459,11 @@
             </objects>
             <point key="canvasLocation" x="-142" y="-54"/>
         </scene>
-        <!--Item-->
+        <!--航空-->
         <scene sceneID="s9v-Rp-6zq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S0T-8M-OhD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="YGL-Jy-6aP"/>
+                    <tabBarItem key="tabBarItem" title="航空" image="账号与安全" id="YGL-Jy-6aP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="reM-9E-rx4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -730,6 +723,8 @@
         <image name="收起的副本" width="22" height="22"/>
         <image name="放大镜" width="144" height="144"/>
         <image name="气象" width="144" height="144"/>
+        <image name="电话" width="25" height="25"/>
+        <image name="账号与安全" width="22" height="22"/>
         <image name="酒店信息图片" width="210" height="117"/>
     </resources>
 </document>

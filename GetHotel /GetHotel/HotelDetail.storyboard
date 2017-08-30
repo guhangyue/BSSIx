@@ -82,6 +82,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="gkc-Pr-AfM"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="3OZ-vW-qXb" id="3Ki-OI-t2B"/>
+                                </connections>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhy-1a-dhy" userLabel="Scroll View2">
                                 <rect key="frame" x="0.0" y="170" width="375" height="497"/>
@@ -516,6 +519,7 @@
                             <constraint firstItem="l1u-J0-bgV" firstAttribute="top" secondItem="hh8-OV-0gn" secondAttribute="bottom" id="ycy-YC-lwm"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="lBR-b0-I2s"/>
                     <connections>
                         <outlet property="addressLbl" destination="6hS-sS-Wif" id="zkj-r2-wyt"/>
                         <outlet property="chatingBtn" destination="C7U-8M-0iE" id="lNV-bC-Rbv"/>
@@ -525,7 +529,7 @@
                         <outlet property="mapBtn" destination="1KI-4F-ZAG" id="h0e-C9-OzQ"/>
                         <outlet property="moneyLbl" destination="vpd-Ze-Fsy" id="62u-sX-D8M"/>
                         <outlet property="payBtn" destination="PNE-Dg-lNj" id="Zd4-4I-J21"/>
-                        <outlet property="scrollView1" destination="E1T-9S-36a" id="zVn-yK-k3S"/>
+                        <outlet property="scrollView1" destination="E1T-9S-36a" id="8oC-Cu-QTA"/>
                         <outlet property="startTimeBtn" destination="T2H-UM-goc" id="jZ3-Hh-f0d"/>
                         <outlet property="toolBar" destination="hh8-OV-0gn" id="bnb-P6-UZQ"/>
                         <segue destination="JQf-0Y-BDJ" kind="show" identifier="DetailToPay" id="pwQ-Xf-ToL"/>
@@ -535,7 +539,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AZa-Wh-YpK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="126.38680659670166"/>
+            <point key="canvasLocation" x="52" y="84"/>
         </scene>
         <!--User Address View Controller-->
         <scene sceneID="8rg-uO-H6m">
@@ -555,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTd-rU-0kz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728.8" y="125.4872563718141"/>
+            <point key="canvasLocation" x="2668" y="125.4872563718141"/>
         </scene>
         <!--Pay View Controller-->
         <scene sceneID="Cnv-Xz-boG">
@@ -694,7 +698,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqx-hv-SlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="789.60000000000002" y="125.4872563718141"/>
+            <point key="canvasLocation" x="1728.8" y="125.4872563718141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N72-lG-7XL">
