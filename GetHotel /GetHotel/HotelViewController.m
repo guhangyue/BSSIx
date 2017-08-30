@@ -366,11 +366,11 @@
 
 - (void)changeImage {
     NSInteger page = [self scrollCheck:_scrollView];
-    [_scrollView scrollRectToVisible:CGRectMake(UI_SCREEN_W *(page+1), 0, UI_SCREEN_W, 150) animated:YES];
+    [_scrollView scrollRectToVisible:CGRectMake(UI_SCREEN_W *(page+1), 0, UI_SCREEN_W, 150) animated:NO];
 }
 - (NSInteger)scrollCheck: (UIScrollView *)scrollView {
     NSInteger page = scrollView.contentOffset.x / scrollView.frame.size.width;
-    if (page == 4) {
+    if (page == 2) {
         page = -1;
     }
     //NSLog(@"%ld",(long)page);
@@ -385,7 +385,7 @@
 //执行网络请求
 - (void)networkRequest{
     NSLog(@"123");
-         NSDictionary *para = @{@"city_name":@"无锡",@"pageNum" : @1,@"pageSize":@10, @"startId" :@1 , @"priceId":@1,@"sortingId" :@1 ,@"inTime" :@"2017-01-05" ,@"outTime" : @"2017-05-06",@"wxlongitude":@"",@"wxlatitude":@""};
+         NSDictionary *para = @{@"city_name":_cityBtn.titleLabel.text,@"pageNum" : @1,@"pageSize":@10, @"startId" :@1 , @"priceId":@1,@"sortingId" :@1 ,@"inTime" :@"2017-01-05" ,@"outTime" : @"2017-05-06",@"wxlongitude":@"",@"wxlatitude":@""};
     NSLog(@"456");
         [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             NSLog(@"789");
@@ -460,7 +460,7 @@
     
     //将http请求的字符串转换为NSURL
     NSURL *url = [NSURL URLWithString:hotel.hotelImg];
-    [cell.imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"酒店 1"]];
+    [cell.imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
     return cell;
 
 }
