@@ -467,7 +467,7 @@
                             </toolbar>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="l1u-J0-bgV">
                                 <rect key="frame" x="0.0" y="401" width="375" height="216"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <date key="date" timeIntervalSinceReferenceDate="525598811.47540998">
                                     <!--2017-08-28 07:40:11 +0000-->
                                 </date>
@@ -522,14 +522,19 @@
                     <navigationItem key="navigationItem" id="lBR-b0-I2s"/>
                     <connections>
                         <outlet property="addressLbl" destination="6hS-sS-Wif" id="zkj-r2-wyt"/>
+                        <outlet property="areaLbl" destination="uHH-Et-0Dc" id="4vo-mg-Oga"/>
+                        <outlet property="bedNameLbl" destination="Gbt-XI-VUD" id="UaD-hJ-c0y"/>
                         <outlet property="chatingBtn" destination="C7U-8M-0iE" id="lNV-bC-Rbv"/>
                         <outlet property="datePicker" destination="l1u-J0-bgV" id="SeD-2o-om6"/>
+                        <outlet property="eatingLbl" destination="PAh-Y8-gcp" id="fDe-Vc-ZDj"/>
                         <outlet property="endTimeBtn" destination="knw-S2-a9x" id="978-mi-foc"/>
                         <outlet property="hotelNameLbl" destination="NM1-Gn-ozL" id="SLU-L5-f4D"/>
                         <outlet property="mapBtn" destination="1KI-4F-ZAG" id="h0e-C9-OzQ"/>
                         <outlet property="moneyLbl" destination="vpd-Ze-Fsy" id="62u-sX-D8M"/>
                         <outlet property="payBtn" destination="PNE-Dg-lNj" id="Zd4-4I-J21"/>
+                        <outlet property="roomNameLbl" destination="iXk-TI-nS3" id="MOp-7U-ZiA"/>
                         <outlet property="scrollView1" destination="E1T-9S-36a" id="8oC-Cu-QTA"/>
+                        <outlet property="smallPictureImgView" destination="d98-mq-k9S" id="rQn-Qs-UJI"/>
                         <outlet property="startTimeBtn" destination="T2H-UM-goc" id="jZ3-Hh-f0d"/>
                         <outlet property="toolBar" destination="hh8-OV-0gn" id="bnb-P6-UZQ"/>
                         <segue destination="JQf-0Y-BDJ" kind="show" identifier="DetailToPay" id="pwQ-Xf-ToL"/>

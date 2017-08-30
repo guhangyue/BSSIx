@@ -7,28 +7,30 @@
 //
 
 #import "HotelDetailViewController.h"
-
+#import "HotelDetailModel.h"
 
 @interface HotelDetailViewController ()<UIScrollViewDelegate>{
     NSInteger flag;
 }
-@property (weak, nonatomic) IBOutlet UIImageView *hotelPictureImgView;
+
 @property (weak, nonatomic) IBOutlet UILabel *hotelNameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLbl;
 @property (weak, nonatomic) IBOutlet UILabel *addressLbl;
 @property (weak, nonatomic) IBOutlet UIButton *mapBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *smallPictureImgView;
-@property (weak, nonatomic) IBOutlet UIButton *chooseHotelBtn;
-//@property (weak, nonatomic) IBOutlet UILabel *inTimeLbl;
-//@property (weak, nonatomic) IBOutlet UILabel *outTimeLbl;
+
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *chatingBtn;
 - (IBAction)chatingAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event;
-//@property (weak, nonatomic) IBOutlet UIBarButtonItem *confirmBtn;
+@property (weak, nonatomic) IBOutlet UILabel *roomNameLbl;
+@property (weak, nonatomic) IBOutlet UILabel *eatingLbl;
+@property (weak, nonatomic) IBOutlet UILabel *bedNameLbl;
+@property (weak, nonatomic) IBOutlet UILabel *areaLbl;
+
 - (IBAction)confirmAction:(UIBarButtonItem *)sender;
-//@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelBtn;
+
 - (IBAction)cancelAction:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -46,7 +48,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self naviConfig1];
-    [self getimage];
+    [self getImage];
+    [self HotelDetailRequest];
         // Do any additional setup after loading the view.
     
 }
@@ -55,7 +58,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)getimage{
+-(void)getImage{
     CGSize scrollSize = _scrollView1.frame.size;
     for(int i =0;i<4;i++)
     {
@@ -141,6 +144,7 @@
 -(void)setDefaultDateForButton{
     //初始化日期格式器
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+    
     //定义日期格式
     formatter.dateFormat=@"MM月dd日";
     //当前时间
@@ -155,7 +159,51 @@
     [_endTimeBtn setTitle:dateTomStr forState:UIControlStateNormal];
 }
 
-
+- (void)HotelDetailRequest{
+    //菊花膜
+    UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
+    //NSLog(@"%@",_hotelid);
+    NSDictionary * para = @{@"id":@1};
+    [RequestAPI requestURL:@"/findHotelById" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        [aiv stopAnimating];
+        NSLog(@"hotel:%@",responseObject);
+        if([responseObject[@"result"]integerValue]==1){
+            NSDictionary *result = responseObject[@"content"];
+            HotelDetailModel *detail = [[ HotelDetailModel alloc]initWithDict:result];
+            _hotelNameLbl.text =detail.hotels;
+            _addressLbl.text = detail.address;
+            _moneyLbl.text = [NSString stringWithFormat:@"¥ %ld",(long)detail.price];
+            [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.image] placeholderImage:[UIImage imageNamed:@"11"]];
+            //_hotelbed.text = detail.type;
+            NSArray *list = result[@"hotel_types"];
+            for(int i=0;i<list.count;i++){
+                switch (i) {
+                    case 0:
+                        _roomNameLbl.text= list[i];
+                        break;
+                    case 1:
+                        _eatingLbl.text = list[i];
+                        break;
+                    case 2:
+                        _bedNameLbl.text = list[i];
+                        break;
+                    case 3:
+                        _areaLbl.text = list[i];
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+        }else{
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self ];
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"该功能需要登录才会开放，请您登录" andTitle:@"提示" onView:self];
+    }];
+}
 /*
 #pragma mark - Navigation
 
@@ -241,6 +289,7 @@
     flag=0;
     _toolBar.hidden=NO;
     _datePicker.hidden=NO;
+    
 }
 //结束日期按钮点击事件
 - (IBAction)endTimeAction:(UIButton *)sender forEvent:(UIEvent *)event {
