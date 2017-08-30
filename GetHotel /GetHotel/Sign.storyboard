@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Emo-jk-lAJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Emo-jk-lAJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -165,7 +165,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SignNavi" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Emo-jk-lAJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Q2f-8Y-44H">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q2f-8Y-44H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -348,6 +348,9 @@
                                 <state key="normal" title="注册">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerAction:forEvent:" destination="33z-eI-IrB" eventType="touchUpInside" id="ksN-Ji-mA1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -365,6 +368,7 @@
                     <connections>
                         <outlet property="confirmPasstextfiled" destination="esJ-XB-aD2" id="iq2-ND-zmu"/>
                         <outlet property="passWordtextfiled" destination="KZc-Fn-0xR" id="UK1-Ck-QEL"/>
+                        <outlet property="registrationBtn" destination="jbI-fF-Bpw" id="pL9-Gc-aOm"/>
                         <outlet property="userPhonetextfiled" destination="GCD-90-0M7" id="geq-ig-zCj"/>
                     </connections>
                 </viewController>
