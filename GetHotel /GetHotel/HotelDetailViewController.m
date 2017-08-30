@@ -36,7 +36,9 @@
 - (IBAction)startTimeAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *endTimeBtn;
 - (IBAction)endTimeAction:(UIButton *)sender forEvent:(UIEvent *)event;
-
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView1;
+@property (strong,nonatomic )IBOutlet UIPageControl *page;
+@property (strong ,nonatomic) IBOutlet NSTimer *starT;
 @end
 
 @implementation HotelDetailViewController
@@ -51,6 +53,70 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)getimage{
+    CGSize scrollSize = _scrollView1.frame.size;
+    for(int i =0;i<4;i++)
+    {
+        UIImageView *imageview = [[UIImageView alloc]init];
+        
+        //CGFloat scrollWidth = scrollSize.width;
+        CGFloat imagex = [[UIScreen mainScreen] bounds].size.width * i;
+        CGFloat imagey = 0;
+        CGFloat imagew = [[UIScreen mainScreen] bounds].size.width;
+        CGFloat imageh = scrollSize.height;
+        imageview.frame = CGRectMake(imagex, imagey, imagew, imageh);
+        NSString *imagestr = [NSString stringWithFormat:@"2%d",i+1];
+        imageview.image = [UIImage imageNamed:imagestr];
+        [_scrollView1 addSubview:imageview];
+    }
+    _scrollView1.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 4, 0);
+    _scrollView1.showsVerticalScrollIndicator = NO;
+    _scrollView1.backgroundColor = [UIColor grayColor];
+    self.scrollView1.delegate = self;
+    _page = [[UIPageControl alloc] init];
+    _page.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2 + 150, [[UIScreen mainScreen] bounds].size.height/6 +35, 10, 10);
+    _page.numberOfPages = 4;
+    _page.pageIndicatorTintColor = [UIColor blueColor];
+    _page.currentPageIndicatorTintColor = [UIColor whiteColor];
+    [self.view addSubview:_page];
+    [self startTime];
+}
+-(void)startTime{
+    
+    self.starT = [NSTimer timerWithTimeInterval: 2.0 target: self selector:@selector(nextpage)userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop]addTimer:self.starT forMode:NSRunLoopCommonModes];
+}
+-(void)nextpage{
+    NSInteger page1 = self.page.currentPage;
+    NSLog(@"%ld",(long)page1);
+    NSInteger nextpage = 0;
+    if(page1 == self.page.numberOfPages - 1)
+    {
+        nextpage = 0;
+    }else{
+        nextpage = page1 +1;
+    }
+    
+    CGFloat content = nextpage *_scrollView1.frame.size.width;
+    _scrollView1.contentOffset = CGPointMake(content, 0);
+    
+    
+}
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    [_starT invalidate];
+    
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    self.starT = [NSTimer timerWithTimeInterval: 2.0 target: self selector:@selector(nextpage)userInfo:nil repeats:YES];
+    [self startTime];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    int page = scrollView.contentOffset.x / scrollView.frame.size.width;
+    //    NSLog(@"%d", page);
+    // 设置页码
+    _page.currentPage = page;
 }
 - (void)naviConfig1 {
     //设置导航条标题文字

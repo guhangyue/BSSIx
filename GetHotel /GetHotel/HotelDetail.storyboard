@@ -525,6 +525,7 @@
                         <outlet property="mapBtn" destination="1KI-4F-ZAG" id="h0e-C9-OzQ"/>
                         <outlet property="moneyLbl" destination="vpd-Ze-Fsy" id="62u-sX-D8M"/>
                         <outlet property="payBtn" destination="PNE-Dg-lNj" id="Zd4-4I-J21"/>
+                        <outlet property="scrollView1" destination="E1T-9S-36a" id="zVn-yK-k3S"/>
                         <outlet property="startTimeBtn" destination="T2H-UM-goc" id="jZ3-Hh-f0d"/>
                         <outlet property="toolBar" destination="hh8-OV-0gn" id="bnb-P6-UZQ"/>
                         <segue destination="JQf-0Y-BDJ" kind="show" identifier="DetailToPay" id="pwQ-Xf-ToL"/>
