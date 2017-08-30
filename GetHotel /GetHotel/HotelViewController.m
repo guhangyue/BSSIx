@@ -383,12 +383,13 @@
 //执行网络请求
 - (void)networkRequest{
     NSLog(@"123");
-         NSDictionary *para = @{@"city_name":_cityBtn.titleLabel.text,@"pageNum" : @1, @"perSize" : @10,@"startId": @1,@"priceId":@1,@"sortingId":@1,@"inTime":_date1.titleLabel.text,@"outTime":_date2Btn.titleLabel.text,@"wxlongitude":@"31.568",@"wxlatitude":@"120.299"};
+         NSDictionary *para = @{@"city_name":@"无锡",@"pageNum" : @1,@"pageSize":@10, @"startId" :@1 , @"priceId":@1,@"sortingId" :@1 ,@"inTime" :@"2017-01-05" ,@"outTime" : @"2017-05-06",@"wxlongitude":@"",@"wxlatitude":@""};
     NSLog(@"456");
-        [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kJson success:^(id responseObject) {
+        [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             NSLog(@"789");
             [_aiv stopAnimating];
             if ([responseObject[@"result"] integerValue] == 1) {
+                NSLog(@"%@",responseObject);
                 if (_adArr.count == 0) {
                 NSArray *advertising = responseObject[@"content"][@"advertising"];
                 for (NSDictionary *dict in advertising) {
@@ -431,16 +432,16 @@
 }
 
 //设置当一个细胞将要出现的时候也要做的事情
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    //判断是不是最后一行细胞将要出现
-    if (indexPath.row == _arr.count -1) {
-        //判断是否有下一页存在
-        if (pageNum <totalPage) {
-            //在这里执行上拉翻页的数据操作
-            pageNum ++;
-                  }
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    //判断是不是最后一行细胞将要出现
+//    if (indexPath.row == _arr.count -1) {
+//        //判断是否有下一页存在
+//        if (pageNum <totalPage) {
+//            //在这里执行上拉翻页的数据操作
+//            pageNum ++;
+//                  }
+//    }
+//}
 //设置每一组中每一行的cell（细胞）长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //根据某个具体名字找到该名字在页面上对应的细胞
@@ -451,10 +452,12 @@
     cell.HotelLocation.text = hotel.hotelLocation;
     cell.hotelMoney.text = hotel.hotelMoney;
     cell.hotelDistance.text = hotel.hotelDistance;
+    
     //将http请求的字符串转换为NSURL
     NSURL *url = [NSURL URLWithString:hotel.hotelImg];
     [cell.imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"酒店 1"]];
     return cell;
+
 }
 //设置每一组中每一行的cell（细胞）被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
