@@ -491,7 +491,13 @@
     cell.HotelName.text = hotel.hotelName;
     cell.HotelLocation.text = hotel.hotelLocation;
     cell.hotelMoney.text = hotel.hotelMoney;
-    cell.hotelDistance.text = [NSString stringWithFormat:@"%ld",(long)hotel.hotelDistance];
+    if (hotel.hotelDistance >1000) {
+        NSInteger a = hotel.hotelDistance/1000;
+        cell.hotelDistance.text = [NSString stringWithFormat:@"距离我%ld公里",a];
+    }else{
+        cell.hotelDistance.text = [NSString stringWithFormat:@"距离我%ld米",hotel.hotelDistance];
+    }
+    
     
     //将http请求的字符串转换为NSURL
     NSURL *url = [NSURL URLWithString:hotel.hotelImg];
