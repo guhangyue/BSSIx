@@ -266,6 +266,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="33z-eI-IrB" id="xtt-Kq-VP4"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVH-dc-vcv" userLabel="line">
                                         <rect key="frame" x="40" y="100" width="255" height="1"/>
@@ -283,6 +286,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="33z-eI-IrB" id="D8n-2r-fH0"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSq-ad-oFY" userLabel="line">
                                         <rect key="frame" x="41" y="149.5" width="254" height="1"/>
@@ -300,6 +306,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="33z-eI-IrB" id="Imu-Jl-Onm"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6m6-2u-T4C" userLabel="line">
                                         <rect key="frame" x="40" y="191.5" width="255" height="1"/>
@@ -350,6 +359,7 @@
                                 </state>
                                 <connections>
                                     <action selector="registerAction:forEvent:" destination="33z-eI-IrB" eventType="touchUpInside" id="ksN-Ji-mA1"/>
+                                    <segue destination="JUs-bE-VFY" kind="show" id="HK3-2L-n4u"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -367,6 +377,7 @@
                     <navigationItem key="navigationItem" title="会员注册" id="smW-rq-LIR"/>
                     <connections>
                         <outlet property="confirmPasstextfiled" destination="esJ-XB-aD2" id="iq2-ND-zmu"/>
+                        <outlet property="headImageView" destination="DAQ-Ee-ySY" id="hv2-li-DSa"/>
                         <outlet property="passWordtextfiled" destination="KZc-Fn-0xR" id="UK1-Ck-QEL"/>
                         <outlet property="registrationBtn" destination="jbI-fF-Bpw" id="pL9-Gc-aOm"/>
                         <outlet property="userPhonetextfiled" destination="GCD-90-0M7" id="geq-ig-zCj"/>
@@ -374,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63X-L5-UPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2473" y="63"/>
+            <point key="canvasLocation" x="1746" y="775"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RGy-c3-ZZX">
@@ -404,4 +415,7 @@
         <image name="电话" width="25" height="25"/>
         <image name="账号与安全" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HK3-2L-n4u"/>
+    </inferredMetricsTieBreakers>
 </document>

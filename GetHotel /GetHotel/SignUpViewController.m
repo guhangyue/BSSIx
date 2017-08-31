@@ -7,10 +7,11 @@
 //
 
 #import "SignUpViewController.h"
-#import "UserModel.h"
 
-@interface SignUpViewController ()<UITextFieldDelegate>
+
+@interface SignUpViewController ()<UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userPhonetextfiled;
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UITextField *passWordtextfiled;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasstextfiled;
 - (IBAction)registerAction:(UIButton *)sender forEvent:(UIEvent *)event;
@@ -24,12 +25,71 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self uiLayout];
+    [self naviConfig];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)uiLayout{
+    _headImageView.layer.borderColor = [UIColor blueColor].CGColor;
+    //判断是否存在记忆体
+    if (![[Utilities  getUserDefaults:@"userPhone"] isKindOfClass:[NSNull class]]) {
+        if ([Utilities  getUserDefaults:@"userPhone"] != nil) {
+            //将它显示在用户名输入框中
+            _userPhonetextfiled.text = [Utilities getUserDefaults:@"userPhone"];
+        }
+    }
+    
+}
+
+//当前页面将要显示的时候，显示导航栏
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+- (void)naviConfig {
+    //设置导航条标题文字
+    self.navigationItem.title = @"注册会员";
+    //设置导航条颜色（风格颜色）
+    self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
+    //设置导航条标题颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否隐藏.
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
+}
+
+//自定的返回按钮的事件
+- (void)leftButtonAction: (UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField == _userPhonetextfiled || textField == _passWordtextfiled || textField == _confirmPasstextfiled) {
+        if (_userPhonetextfiled.text.length != 0 && _passWordtextfiled.text.length != 0 && _confirmPasstextfiled.text.length != 0) {
+            _registrationBtn.enabled =YES;
+        }
+    }
+}
+//按键盘的return收回按钮
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField == _userPhonetextfiled || textField == _passWordtextfiled || textField == _confirmPasstextfiled) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+//让根视图结束编辑状态，到达收起键盘的目的
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 
 /*
@@ -42,87 +102,58 @@
 }
 */
 
-//自定的返回按钮的事件
-- (void)leftButtonAction: (UIButton *)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
--(void)readyForEncoding
-{
-    _aiv=[Utilities getCoverOnView:self.view];
-    
-    [RequestAPI requestURL:@"/login/getKey" withParameters:@{@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject)
-     {
-         //NSLog(@"responseObject":%@,responseObject);
-         if ([responseObject[@"resultFlag"]integerValue]==8001)
-         {
-             NSDictionary *result=responseObject[@"result"];
-             NSString *modulus = result[@"modulus"];
-             NSString *exponent = result[@"exponent"];
-             //对内容进行MD5加密
-             NSString *md5Str=[_passWordtextfiled.text getMD5_32BitString];
-             
-             
-             //用模数和指数对MD5密码进行加密过后的密码进行加密   categary
-             NSString *rsaStr=[NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
-             [self signInWithEncryptPwd:rsaStr];
-         }else{
-             [_aiv stopAnimating];
-             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
-             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
-         }
-     }failure:^(NSInteger statusCode, NSError *error) {
-         [_aiv stopAnimating];
-         //业务逻辑失败的情况下
-         [Utilities popUpAlertViewWithMsg:@"网络错误，请稍后再试" andTitle:@"提示" onView:self];
-     }];
-    
-}
--(void)signInWithEncryptPwd:(NSString *)encryptPwd
-{
-    NSLog(@"0123");
-    NSDictionary *parameter = @{@"memberId" : _userPhonetextfiled.text, @"userPwd" : _passWordtextfiled.text,@"nickname": _confirmPasstextfiled.text};
-    NSLog(@"pp");
-    [RequestAPI requestURL:@"/register" withParameters:parameter andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
-        NSLog(@"012");
-        [_aiv stopAnimating];
-        NSLog(@"responseObject=%@",responseObject);
-        if ([responseObject[@"resultFlag"]integerValue]==1) {
-            NSDictionary *result=responseObject[@"result"];
-            UserModel *user=[[UserModel alloc]initWhitDictionary:result];
-            //将用户获取到的信息打包存储到单例化全局变量
-            [[StorageMgr singletonStorageMgr]addKey:@"MemberInfo" andValue:user];
-            //单独将用户的ID也存储进去单例化全局变量中来作为用户是否已经登录的判断依据，同时也方便其他所有的页面更快捷的使用用户ID这个参数
-            [[StorageMgr singletonStorageMgr]addKey:@"memberId" andValue:user.memberId];
-            //如果键盘还开着 就让他收回去
-            [self.view endEditing:YES];
-            //清空密码输入框的内容
-            _passWordtextfiled.text=@"";
-            //记忆用户名
-            [Utilities setUserDefaults:@"Username" content:_userPhonetextfiled.text];
-            //用model的方式返回上一页
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-        }else{
-            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
-            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
-        }
-    } failure:^(NSInteger statusCode, NSError *error) {
-        [_aiv stopAnimating];
-        //业务逻辑失败的情况下
-        [Utilities popUpAlertViewWithMsg:@"网络错误，请稍后再试" andTitle:@"提示" onView:self];
-    }];
-}
 
 
 - (IBAction)registerAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    NSLog(@"111");
-    if (_confirmPasstextfiled.text == _passWordtextfiled.text ) {
-        [self readyForEncoding];
+    if(_userPhonetextfiled.text.length==0 ||_userPhonetextfiled.text.length<11){
+        [Utilities popUpAlertViewWithMsg:@"请输入有效的手机号" andTitle:nil onView:self];
+        return;
     }
-    else {
-        [Utilities popUpAlertViewWithMsg:@"两次输入密码不一致" andTitle:@"提示" onView:self];
+    if(_passWordtextfiled.text.length==0)
+    {
+        [Utilities popUpAlertViewWithMsg:@"请输入密码" andTitle:nil onView:self];
+        return;
     }
-    [self readyForEncoding];
+    if(_passWordtextfiled.text.length<6||_passWordtextfiled.text.length>18){
+        [Utilities popUpAlertViewWithMsg:@"您输入的密码必须在6到18位之间" andTitle:nil onView:self];
+        return;
+    }
+    //判断电话号码是否都是数字
+    NSCharacterSet *notDigits=[[NSCharacterSet decimalDigitCharacterSet]invertedSet];
+    if(_userPhonetextfiled.text.length<11||[_userPhonetextfiled.text rangeOfCharacterFromSet:notDigits].location!=NSNotFound){
+        [Utilities popUpAlertViewWithMsg:@"请输入有效手机号" andTitle:nil onView:self];
+    }
+    //确认无误后，执行网络请求
+    [self signUpRequest];
 }
+
+- (void)signUpRequest{
+    // 创建菊花膜
+    _aiv = [Utilities getCoverOnView:self.view];
+    NSDictionary *para=@{@"tel":_userPhonetextfiled.text,@"pwd":_passWordtextfiled.text};
+    NSLog(@"para = %@", para);
+    //开始请求
+    [RequestAPI requestURL:@"/register" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
+        [_aiv stopAnimating];
+        NSLog(@"注册：%@", responseObject);
+        if ([responseObject[@"result"] integerValue]==1) {
+            [Utilities popUpAlertViewWithMsg:@"注册成功" andTitle:@"提示" onView:self];
+            [self performSegueWithIdentifier:@"signInToLogin" sender:self];
+        }
+        else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self ];
+        }
+        
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_aiv stopAnimating];
+        NSLog(@"%ld",(long)statusCode);
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅" andTitle:nil onView:self];
+        
+    }];
+    
+}
+
 @end
