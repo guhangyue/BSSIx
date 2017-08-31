@@ -15,6 +15,8 @@
 @property (strong, nonatomic) NSString *hotelLocation;//酒店所在地
 @property (strong, nonatomic) NSString *hotelDistance;//距离
 @property (strong, nonatomic) NSString *hotelMoney;//酒店费用
+@property (nonatomic) NSTimeInterval startTime;
+@property (nonatomic) NSTimeInterval endTime;
 @property (nonatomic) NSInteger hotelId;
 
 - (instancetype)initWithDictForHotelCell: (NSDictionary *)dict;

@@ -481,7 +481,7 @@
                                 </constraints>
                                 <state key="normal" title="购买"/>
                                 <connections>
-                                    <action selector="payAction:forEvent:" destination="3OZ-vW-qXb" eventType="touchUpInside" id="jk1-cq-dTT"/>
+                                    <action selector="payAction:forEvent:" destination="3OZ-vW-qXb" eventType="touchUpInside" id="A02-NZ-Y3V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7U-8M-0iE">
@@ -635,11 +635,11 @@
                                     <constraint firstItem="pCh-tD-v2H" firstAttribute="leading" secondItem="5iY-gV-1ar" secondAttribute="leading" id="tOq-Ao-MTl"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Sy-1o-ipS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Sy-1o-ipS">
                                 <rect key="frame" x="0.0" y="201" width="375" height="402"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="88" id="XhW-As-3WS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PayCell" rowHeight="88" id="XhW-As-3WS">
                                         <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XhW-As-3WS" id="vDD-Pd-bEk">
@@ -648,6 +648,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="y62-Tm-0St" id="kju-7J-QXn"/>
+                                    <outlet property="delegate" destination="y62-Tm-0St" id="Mcs-ZY-UMJ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -665,6 +669,14 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="6Td-jA-JWB"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="endTimeLabel" destination="T1w-hJ-tdZ" id="Mys-CT-MV8"/>
+                        <outlet property="hotelNameLabel" destination="5iY-gV-1ar" id="q3W-gf-RrM"/>
+                        <outlet property="payLabel" destination="pCh-tD-v2H" id="qm2-Le-wTW"/>
+                        <outlet property="priceLabel" destination="wQl-Lx-7zL" id="TSC-Gb-oT2"/>
+                        <outlet property="startTimeLabel" destination="4Qq-hU-gnM" id="b0Q-gu-0lY"/>
+                        <outlet property="tableView" destination="7Sy-1o-ipS" id="qBS-3b-ukr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIk-KL-b1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

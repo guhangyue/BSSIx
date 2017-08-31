@@ -27,6 +27,8 @@
     self = [super init];
     if (self) {
         self.adImg = [Utilities nullAndNilCheck:dict[@"ad_img"] replaceBy:@"你好我好"];
+        _startTime=[dict[@"startDate"] isKindOfClass:[NSNull class]] ? (NSTimeInterval)0 : (NSTimeInterval)[dict[@"startDate"] integerValue];
+        _endTime=[dict[@"endDate"] isKindOfClass:[NSNull class]] ? (NSTimeInterval)0 : (NSTimeInterval)[dict[@"endDate"] integerValue];
     }
     return self;
 }
