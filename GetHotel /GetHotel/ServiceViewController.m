@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _arr = @[@{@"title":@"客服电话",@"content":@"10086120"},@{@"title":@"客服QQ",@"content":@"10086110"}];
+    _arr = @[@{@"title":@"客服电话:10086120"},@{@"title":@"客服QQ:10086110"}];
     
     _serviceTableView.tableFooterView = [UIView new];
     [self setNavigationItem];
@@ -56,7 +56,7 @@
     //设置位置大小
     leftBtn.frame = CGRectMake(0, 0, 20, 20);
     //设置其背景图片为返回图片
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回白色"] forState:UIControlStateNormal];
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
     //给按钮添加事件
     [leftBtn addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -77,7 +77,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"callUsCell" forIndexPath:indexPath];
     NSDictionary *dict = _arr[indexPath.row];
     cell.textLabel.text = dict[@"title"];
-    cell.detailTextLabel.text = dict[@"content"];
+    //cell.detailTextLabel.text = dict[@"content"];
     return cell;
 }
 //设置每行高度

@@ -310,55 +310,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_unlock" translatesAutoresizingMaskIntoConstraints="NO" id="vYq-9K-HKo">
-                                <rect key="frame" x="60" y="164" width="16" height="18.5"/>
+                                <rect key="frame" x="60" y="164" width="18" height="21"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wpm-dJ-V1W" userLabel="line">
-                                <rect key="frame" x="60" y="187.5" width="255" height="1"/>
+                                <rect key="frame" x="60" y="190" width="255" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Z2W-pk-bjL"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入旧密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="y3M-g2-TJh">
-                                <rect key="frame" x="90.5" y="163.5" width="224.5" height="19"/>
+                                <rect key="frame" x="92.5" y="165" width="222.5" height="19"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_unlock" translatesAutoresizingMaskIntoConstraints="NO" id="o2V-9p-UiH">
-                                <rect key="frame" x="60" y="218.5" width="16" height="18"/>
+                                <rect key="frame" x="60" y="221" width="18.5" height="21"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXc-2p-8T2" userLabel="line">
-                                <rect key="frame" x="60" y="241.5" width="255" height="1"/>
+                                <rect key="frame" x="60" y="247" width="255" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="O8B-1l-GjQ"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入旧密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="g2n-qi-wCf">
-                                <rect key="frame" x="90.5" y="218" width="224.5" height="19"/>
+                                <rect key="frame" x="93" y="222" width="222" height="19"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_unlock" translatesAutoresizingMaskIntoConstraints="NO" id="Mjr-I5-z8O">
-                                <rect key="frame" x="60" y="272.5" width="16" height="18"/>
+                                <rect key="frame" x="60" y="278" width="18.5" height="21"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5aX-98-Acf" userLabel="line">
-                                <rect key="frame" x="60" y="295.5" width="255" height="1"/>
+                                <rect key="frame" x="60" y="304" width="255" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Hte-OH-FAd"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入旧密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Zzj-qZ-ZDE">
-                                <rect key="frame" x="90.5" y="272" width="224.5" height="19"/>
+                                <rect key="frame" x="93" y="279" width="222" height="19"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEi-of-nEa">
-                                <rect key="frame" x="60" y="376.5" width="255" height="33"/>
+                                <rect key="frame" x="60" y="385" width="255" height="33"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="确认">
@@ -497,7 +497,7 @@
                                                                 <constraint firstAttribute="height" constant="90" id="5h9-fz-svW"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AKO-om-akk">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_adress" translatesAutoresizingMaskIntoConstraints="NO" id="AKO-om-akk">
                                                             <rect key="frame" x="15" y="46" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="AKO-om-akk" secondAttribute="height" multiplier="1:1" id="a7C-Nw-eiK"/>
@@ -505,7 +505,7 @@
                                                                 <constraint firstAttribute="height" constant="20" id="mYq-I1-j5g"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EDL-ji-nkI">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的" translatesAutoresizingMaskIntoConstraints="NO" id="EDL-ji-nkI">
                                                             <rect key="frame" x="15" y="76" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="EJT-sU-j6A"/>
@@ -513,7 +513,7 @@
                                                                 <constraint firstAttribute="width" secondItem="EDL-ji-nkI" secondAttribute="height" multiplier="1:1" id="ugH-t3-PpT"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的" translatesAutoresizingMaskIntoConstraints="NO" id="tx8-Qq-lxK">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="tx8-Qq-lxK">
                                                             <rect key="frame" x="15" y="106" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="tx8-Qq-lxK" secondAttribute="height" multiplier="1:1" id="8Q2-f8-uMl"/>
@@ -885,7 +885,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_unlock" width="16" height="16"/>
+        <image name="calendar" width="19" height="19"/>
+        <image name="ic_unlock" width="18" height="21"/>
+        <image name="map_adress" width="24" height="22"/>
         <image name="头像" width="100" height="100"/>
         <image name="我的" width="50" height="50"/>
         <image name="酒店" width="32" height="25"/>
