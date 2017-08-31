@@ -44,6 +44,7 @@
     self.navigationItem.title = @"我的航空";
     self.navigationController.navigationBar.backgroundColor = [UIColor blueColor];
     //[self.navigationController.navigationBar setBarTintColor:HEAD_THEMECOLOR];
-    
+    //设置导航条的颜色（风格颜色）
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(24, 124, 326);
 }
 @end

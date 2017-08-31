@@ -118,7 +118,7 @@
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if([Utilities loginCheck]){
+    //if([Utilities loginCheck]){
     switch (indexPath.section) {
         case 0:
             [self performSegueWithIdentifier:@"myInfoToHotel" sender:self];
@@ -139,11 +139,11 @@
             [self performSegueWithIdentifier:@"myInfoToSerview" sender:self];
         break;
      }
-    }else{
-        UINavigationController *signNavi=[Utilities getStoryboardInstance:@"Sign" byIdentity:@"SignNavi"];
+    //}//else{
+       // UINavigationController *signNavi=[Utilities getStoryboardInstance:@"Sign" byIdentity:@"SignNavi"];
         //执行跳转
-        [self presentViewController:signNavi animated:YES completion:nil];
-    }
+        //[self presentViewController:signNavi animated:YES completion:nil];
+    //}
 }
 
 - (IBAction)loginAction:(UIButton *)sender forEvent:(UIEvent *)event {
