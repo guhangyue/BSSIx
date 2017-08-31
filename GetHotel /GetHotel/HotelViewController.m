@@ -19,6 +19,9 @@
     NSInteger totalPage;
     BOOL isLoading;
     BOOL firstVisit;
+    BOOL bule;
+    NSInteger index3;
+    NSInteger flag2;
 }
 @property (strong, nonatomic) UIActivityIndicatorView *aiv;
 @property (strong, nonatomic) NSMutableArray *arr;
@@ -41,10 +44,42 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSString *inTime; //按钮上显示的入住时间
 @property (strong, nonatomic) NSString *outTime;// 按钮上显示的离店时间
+@property (weak, nonatomic) IBOutlet UIButton *zhinengBtn;
+- (IBAction)zhinengAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @property (strong, nonatomic) NSMutableArray *adArr;
 - (IBAction)cancelAction:(UIBarButtonItem *)sender;
 - (IBAction)confirmAction:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIView *zhinengView;
+@property (weak, nonatomic) IBOutlet UIButton *zn2;
+- (IBAction)zn2Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *zn1Btn;
+- (IBAction)zn1Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *zn3Btn;
+- (IBAction)zn3Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *chooseBtn;
+- (IBAction)chooseAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *chooseQDBtn;
+- (IBAction)chooseQDAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIScrollView *chooseSView;
+@property (weak, nonatomic) IBOutlet UIButton *jiage1Btn;
+- (IBAction)jiage1Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *jiage2Btn;
+- (IBAction)jiage2Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *jiage3Btn;
+- (IBAction)jiage3Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *pingjia1Btn;
+- (IBAction)pingjia1:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *pingjia2Btn;
+- (IBAction)pingjia2Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *juli1Btn;
+- (IBAction)juli1Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *juli2Btn;
+- (IBAction)juli2Action:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *juli3Btn;
+- (IBAction)juli3Action:(UIButton *)sender forEvent:(UIEvent *)event;
+
+
 @property (strong, nonatomic) NSTimer *timer; //控制轮播
 @property (nonatomic) NSTimeInterval inTimeIn; //入住时间戳
 @property (nonatomic) NSTimeInterval outTimeIn;//离店时间戳
@@ -456,7 +491,13 @@
     cell.HotelName.text = hotel.hotelName;
     cell.HotelLocation.text = hotel.hotelLocation;
     cell.hotelMoney.text = hotel.hotelMoney;
-    cell.hotelDistance.text = [NSString stringWithFormat:@"%ld",(long)hotel.hotelDistance];
+    if (hotel.hotelDistance >1000) {
+        NSInteger a = hotel.hotelDistance/1000;
+        cell.hotelDistance.text = [NSString stringWithFormat:@"距离我%ld公里",a];
+    }else{
+        cell.hotelDistance.text = [NSString stringWithFormat:@"距离我%ld米",hotel.hotelDistance];
+    }
+    
     
     //将http请求的字符串转换为NSURL
     NSURL *url = [NSURL URLWithString:hotel.hotelImg];
@@ -506,15 +547,20 @@
     
 }
 
-- (IBAction)date1:(UIButton *)sender forEvent:(UIEvent *)event {
-}
+
 - (IBAction)date1Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag2=0;
     _datePicker.hidden = NO;
     _toolBar.hidden = NO;
+    _zhinengView.hidden=YES;
+    _chooseSView.hidden=YES;
 }
 - (IBAction)date2Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag2=1;
     _datePicker.hidden = NO;
     _toolBar.hidden = NO;
+    _zhinengView.hidden=YES;
+    _chooseSView.hidden=YES;
 }
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
     //拿到当前datepicker选择的事件
@@ -526,38 +572,185 @@
     NSTimeInterval Time = [date timeIntervalSince1970InMilliSecond];
     NSDateFormatter *pFormatter = [NSDateFormatter new];
     pFormatter.dateFormat = @"yyyy-MM-dd";
-    if (ATime == 0) {
-        if (Time > _outTimeIn) {
-            [Utilities popUpAlertViewWithMsg:@"请选择正确的离店时间" andTitle:nil  onView:self];
-            return;
-        }
-        _inTimeIn = Time;
-        _inTime = [NSString stringWithFormat:@"入住%@",theDate];
-//        [_a setTitle:_inTime forState:UIControlStateNormal];
-        //        [_outTimeBtn setTitle:[NSString stringWithFormat:@"离店%@", theDate] forState:UIControlStateNormal];
-        //        [_datePicker setMinimumDate:date];
-        //_date1 = [pFormatter stringFromDate:date];
-    }
-    else {
-        if (Time < _inTimeIn) {
-            
-            return;
-        }
-        _outTimeIn = Time;
-        _outTime = [NSString stringWithFormat:@"离店%@",theDate];
-        
-    }
+//    if (ATime == 0) {
+//        if (Time > _outTimeIn) {
+//            [Utilities popUpAlertViewWithMsg:@"请选择正确的离店时间" andTitle:nil  onView:self];
+//            return;
+//        }
+//        _inTimeIn = Time;
+//        _inTime = [NSString stringWithFormat:@"入住%@",theDate];
+//        [_date1 setTitle:theDate forState:UIControlStateNormal];
+////        [_a setTitle:_inTime forState:UIControlStateNormal];
+//        //        [_outTimeBtn setTitle:[NSString stringWithFormat:@"离店%@", theDate] forState:UIControlStateNormal];
+//        //        [_datePicker setMinimumDate:date];
+//        //_date1 = [pFormatter stringFromDate:date];
+//    }
+//    else {
+//        if (Time < _inTimeIn) {
+//            
+//            return;
+//        }
+//        _outTimeIn = Time;
+//        _outTime = [NSString stringWithFormat:@"离店%@",theDate];
+//        
+//        
+//    }
     
-    _datePicker.hidden = NO;
-    _toolBar.hidden = NO;
-    [self networkRequest];
+    _datePicker.hidden = YES;
+    _toolBar.hidden = YES;
+    _zhinengView.hidden=YES;
+    _chooseSView.hidden=YES;
+   // [self networkRequest];
 
 }
 
 - (IBAction)confirmAction:(UIBarButtonItem *)sender {
-    _toolBar.hidden= NO;
-    _datePicker.hidden=NO;
+    //拿到当前datepicker选择的时间
+    NSDate *date= _datePicker.date;
+    // 初始化一个日期格式器
+    NSDateFormatter *formatter =[[NSDateFormatter alloc]init];
+    formatter.dateFormat=@"MM月dd日 ";
+    //将日期转换为字符串（通过日期格式器中的stringFromDate方法）
+    NSString *theDate=[formatter stringFromDate:date];
+    if (flag2==0) {
+        [_date1 setTitle:theDate forState:UIControlStateNormal];
+        
+    }else{
+        [_date2Btn setTitle:theDate forState:UIControlStateNormal];
+    }
+
+    _toolBar.hidden= YES;
+    _datePicker.hidden=YES;
+    _zhinengView.hidden=YES;
+    _chooseSView.hidden=YES;
+    
     [self networkRequest];
+}
+- (IBAction)zhinengAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    _zhinengView.hidden=NO;
+    _toolBar.hidden= YES;
+    _datePicker.hidden=YES;
+    _chooseSView.hidden=YES;
+}
+- (IBAction)zn2Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    _zhinengView.hidden=YES;
+    _toolBar.hidden= YES;
+    _datePicker.hidden=YES;
+    _chooseSView.hidden=YES;
+}
+- (IBAction)zn1Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    _zhinengView.hidden=YES;
+    _toolBar.hidden= YES;
+    _datePicker.hidden=YES;
+    _chooseSView.hidden=YES;
+}
+- (IBAction)zn3Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    _zhinengView.hidden=YES;
+    _toolBar.hidden= YES;
+    _datePicker.hidden=YES;
+    _chooseSView.hidden=YES;
+}
+- (IBAction)chooseAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    _chooseSView.hidden=NO;
+    _zhinengView.hidden=YES;
+    _toolBar.hidden= YES;
+    _datePicker.hidden=YES;
+}
+- (IBAction)chooseQDAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    _chooseSView.hidden=YES;
+    _zhinengView.hidden=YES;
+    _toolBar.hidden= YES;
+    _datePicker.hidden=YES;
+}
+- (IBAction)jiage1Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (++index3%2==0) {
+        _jiage1Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+    _jiage1Btn.backgroundColor=[UIColor blueColor];
+       _jiage2Btn.backgroundColor=[UIColor lightGrayColor];
+        _jiage3Btn.backgroundColor=[UIColor lightGrayColor];
+    }
+
+   
+}
+- (IBAction)jiage2Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (++index3%2==0) {
+        _jiage2Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _jiage1Btn.backgroundColor=[UIColor lightGrayColor];
+        _jiage2Btn.backgroundColor=[UIColor blueColor];
+        _jiage3Btn.backgroundColor=[UIColor lightGrayColor];
+    }
+    
+    
+}
+- (IBAction)jiage3Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (++index3%2==0) {
+        _jiage3Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _jiage1Btn.backgroundColor=[UIColor lightGrayColor];
+        _jiage2Btn.backgroundColor=[UIColor lightGrayColor];
+        _jiage3Btn.backgroundColor=[UIColor blueColor];
+    }
+}
+- (IBAction)pingjia1:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (bule) {
+                _pingjia1Btn.backgroundColor=[UIColor lightGrayColor];
+            }else{
+                _pingjia2Btn.backgroundColor=[UIColor lightGrayColor];
+                _pingjia1Btn.backgroundColor=[UIColor blueColor];
+            }
+           bule=!bule;
+
+    
+}
+- (IBAction)pingjia2Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (++index3%2==0) {
+        _pingjia2Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _pingjia1Btn.backgroundColor=[UIColor lightGrayColor];
+        _pingjia2Btn.backgroundColor=[UIColor blueColor];
+        
+    }
+
+   
+}
+- (IBAction)juli1Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (++index3%2==0) {
+        _juli1Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _juli1Btn.backgroundColor=[UIColor blueColor];
+        _juli2Btn.backgroundColor=[UIColor lightGrayColor];
+        _juli3Btn.backgroundColor=[UIColor lightGrayColor];
+    }
+   
+}
+- (IBAction)juli2Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (++index3%2==0) {
+        _juli2Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _juli1Btn.backgroundColor=[UIColor lightGrayColor];
+        _juli2Btn.backgroundColor=[UIColor blueColor];
+        _juli3Btn.backgroundColor=[UIColor lightGrayColor];
+    }
+    
+}
+- (IBAction)juli3Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (++index3%2==0) {
+        _juli3Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _juli1Btn.backgroundColor=[UIColor lightGrayColor];
+        _juli2Btn.backgroundColor=[UIColor lightGrayColor];
+        _juli3Btn.backgroundColor=[UIColor blueColor];
+    }
+
 }
 @end
 
