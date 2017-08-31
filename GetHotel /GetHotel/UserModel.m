@@ -16,7 +16,7 @@
         _memberId=[Utilities nullAndNilCheck:dict[@"memberId"] replaceBy:@"0"];
         _grade=[[Utilities nullAndNilCheck:dict[@"grade"] replaceBy:0]integerValue ];
         _headImg=[Utilities nullAndNilCheck:dict[@"head_img"] replaceBy:@""];
-        _userId=[Utilities nullAndNilCheck:dict[@"id"] replaceBy:0];
+        _userId=[Utilities nullAndNilCheck:dict[@"id"] replaceBy:0] ;
         _idCard=[Utilities nullAndNilCheck:dict[@"id_card"] replaceBy:@"未设置"];
         _nickName=[Utilities nullAndNilCheck:dict[@"nick_name"] replaceBy:@"未命名"];
         _openId=[Utilities nullAndNilCheck:dict[@"openid"] replaceBy:@""];

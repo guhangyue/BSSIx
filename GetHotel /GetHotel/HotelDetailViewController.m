@@ -8,6 +8,8 @@
 
 #import "HotelDetailViewController.h"
 #import "HotelDetailModel.h"
+#import "UserModel.h"
+#import "HotelModel.h"
 
 @interface HotelDetailViewController ()<UIScrollViewDelegate>{
     NSInteger flag;
@@ -39,7 +41,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *endTimeBtn;
 - (IBAction)endTimeAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView1;
-@property (strong,nonatomic )IBOutlet UIPageControl *page;
+@property (strong,nonatomic )IBOutlet UIPageControl *page2;
 @property (strong ,nonatomic) IBOutlet NSTimer *starT;
 @end
 
@@ -78,12 +80,12 @@
     _scrollView1.showsVerticalScrollIndicator = NO;
     _scrollView1.backgroundColor = [UIColor grayColor];
    // self.scrollView1.delegate = self;
-    _page = [[UIPageControl alloc] init];
-    _page.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2 + 150, [[UIScreen mainScreen] bounds].size.height/6 +35, 10, 10);
-    _page.numberOfPages = 4;
-    _page.pageIndicatorTintColor = [UIColor blueColor];
-    _page.currentPageIndicatorTintColor = [UIColor whiteColor];
-    [self.view addSubview:_page];
+    _page2 = [[UIPageControl alloc] init];
+    _page2.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2 + 150, [[UIScreen mainScreen] bounds].size.height/6 +35, 10, 10);
+    _page2.numberOfPages = 4;
+    _page2.pageIndicatorTintColor = [UIColor blueColor];
+    _page2.currentPageIndicatorTintColor = [UIColor whiteColor];
+    [self.view addSubview:_page2];
     [self startTime];
 }
 -(void)startTime{
@@ -92,10 +94,10 @@
     [[NSRunLoop mainRunLoop]addTimer:self.starT forMode:NSRunLoopCommonModes];
 }
 -(void)nextpage{
-    NSInteger page1 = self.page.currentPage;
+    NSInteger page1 = self.page2.currentPage;
     NSLog(@"%ld",(long)page1);
     NSInteger nextpage = 0;
-    if(page1 == self.page.numberOfPages - 1)
+    if(page1 == self.page2.numberOfPages - 1)
     {
         nextpage = 0;
     }else{
@@ -120,7 +122,7 @@
     int page = scrollView.contentOffset.x / scrollView.frame.size.width;
     //    NSLog(@"%d", page);
     // 设置页码
-    _page.currentPage = page;
+    _page2.currentPage = page;
 }
 - (void)naviConfig1 {
     //设置导航条标题文字
@@ -163,7 +165,7 @@
     //菊花膜
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
-    NSDictionary * para = @{@"id":@1};
+        NSDictionary * para = @{@"id":@"id",@"hotel_address":@"hotel_address"};
     [RequestAPI requestURL:@"/findHotelById" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];
         NSLog(@"hotel:%@",responseObject);
@@ -173,6 +175,7 @@
             _hotelNameLbl.text =detail.hotels;
             _addressLbl.text = detail.address;
             _moneyLbl.text = [NSString stringWithFormat:@"¥ %ld",(long)detail.price];
+            NSLog(@"%@",_addressLbl.text);
             [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.image] placeholderImage:[UIImage imageNamed:@"11"]];
             //_hotelbed.text = detail.type;
             NSArray *list = result[@"hotel_types"];
