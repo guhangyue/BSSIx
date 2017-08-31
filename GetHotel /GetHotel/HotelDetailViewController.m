@@ -7,9 +7,10 @@
 //
 
 #import "HotelDetailViewController.h"
-#import "HotelDetailModel.h"
-#import "UserModel.h"
+//#import "HotelDetailModel.h"
+//#import "UserModel.h"
 #import "HotelModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HotelDetailViewController ()<UIScrollViewDelegate>{
     NSInteger flag;
@@ -41,6 +42,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *endTimeBtn;
 - (IBAction)endTimeAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView1;
+@property (weak, nonatomic) IBOutlet UIButton *fanhuiBtn;
+- (IBAction)fanhuiAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (strong,nonatomic )IBOutlet UIPageControl *page2;
 @property (strong ,nonatomic) IBOutlet NSTimer *starT;
 @end
@@ -165,18 +168,20 @@
     //菊花膜
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
-        NSDictionary * para = @{@"id":@"id",@"hotel_address":@"hotel_address"};
+   // HotelModel *user=[ HotelModel alloc];
+        NSDictionary *para = @{@"id" : @1};
+   // NSLog(@"%@",user.hotelId);
     [RequestAPI requestURL:@"/findHotelById" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];
-        NSLog(@"hotel:%@",responseObject);
+        NSLog(@"result:%@",responseObject);
         if([responseObject[@"result"]integerValue]==1){
             NSDictionary *result = responseObject[@"content"];
-            HotelDetailModel *detail = [[ HotelDetailModel alloc]initWithDict:result];
-            _hotelNameLbl.text =detail.hotels;
-            _addressLbl.text = detail.address;
-            _moneyLbl.text = [NSString stringWithFormat:@"¥ %ld",(long)detail.price];
-            NSLog(@"%@",_addressLbl.text);
-            [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.image] placeholderImage:[UIImage imageNamed:@"11"]];
+            HotelModel *detail = [[ HotelModel alloc]initWithDictForHotelCell:result];
+            _hotelNameLbl.text =detail.hotelName;
+            _addressLbl.text = detail.hotelLocation;
+            _moneyLbl.text = [NSString stringWithFormat:@"¥ %ld",(long)detail.hotelMoney];
+            
+            [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.hotelImg] placeholderImage:[UIImage imageNamed:@"11"]];
             //_hotelbed.text = detail.type;
             NSArray *list = result[@"hotel_types"];
             for(int i=0;i<list.count;i++){
@@ -299,5 +304,8 @@
     flag=1;
     _toolBar.hidden=NO;
     _datePicker.hidden=NO;
+}
+- (IBAction)fanhuiAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
