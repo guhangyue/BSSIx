@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _myInfoArr = @[@{@"leftIcon":@"酒店详情小图标",@"title":@"我的酒店"},@{@"leftIcon":@"航空",@"title":@"我的航空"},@{@"leftIcon":@"我的消息",@"title":@"我的消息"},@{@"leftIcon":@"设置",@"title":@"账户设置"},@{@"leftIcon":@"使用协议",@"title":@"使用协议"},@{@"leftIcon":@"联系客服",@"title":@"联系客服"}];
+    _myInfoArr = @[@{@"leftIcon":@"113",@"title":@"我的酒店"},@{@"leftIcon":@"aviation",@"title":@"我的航空"},@{@"leftIcon":@"112",@"title":@"我的消息"},@{@"leftIcon":@"设置",@"title":@"账户设置"},@{@"leftIcon":@"1234",@"title":@"使用协议"},@{@"leftIcon":@"123",@"title":@"联系客服"}];
     [self naviConfig];
 }
 
@@ -57,7 +57,7 @@
 //这个方法专门做导航条的控制
 - (void)naviConfig{
     //设置导航条标题的文字
-    self.navigationItem.title = @"城市列表";
+    self.navigationItem.title = @"";
     //设置导航条的颜色（风格颜色）
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(24, 124, 236);
     //设置导航条标题颜色
