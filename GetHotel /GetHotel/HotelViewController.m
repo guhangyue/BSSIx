@@ -19,7 +19,8 @@
     NSInteger totalPage;
     BOOL isLoading;
     BOOL firstVisit;
-    
+    BOOL bule;
+    NSInteger index3;
     NSInteger flag2;
 }
 @property (strong, nonatomic) UIActivityIndicatorView *aiv;
@@ -656,28 +657,94 @@
     _datePicker.hidden=YES;
 }
 - (IBAction)jiage1Action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (++index3%2==0) {
+        _jiage1Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
     _jiage1Btn.backgroundColor=[UIColor blueColor];
+       _jiage2Btn.backgroundColor=[UIColor lightGrayColor];
+        _jiage3Btn.backgroundColor=[UIColor lightGrayColor];
+    }
+
+   
 }
 - (IBAction)jiage2Action:(UIButton *)sender forEvent:(UIEvent *)event {
-    _jiage2Btn.backgroundColor=[UIColor blueColor];
+    if (++index3%2==0) {
+        _jiage2Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _jiage1Btn.backgroundColor=[UIColor lightGrayColor];
+        _jiage2Btn.backgroundColor=[UIColor blueColor];
+        _jiage3Btn.backgroundColor=[UIColor lightGrayColor];
+    }
+    
+    
 }
 - (IBAction)jiage3Action:(UIButton *)sender forEvent:(UIEvent *)event {
-    _jiage3Btn.backgroundColor=[UIColor blueColor];
+    if (++index3%2==0) {
+        _jiage3Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _jiage1Btn.backgroundColor=[UIColor lightGrayColor];
+        _jiage2Btn.backgroundColor=[UIColor lightGrayColor];
+        _jiage3Btn.backgroundColor=[UIColor blueColor];
+    }
 }
 - (IBAction)pingjia1:(UIButton *)sender forEvent:(UIEvent *)event {
-    _pingjia1Btn.backgroundColor=[UIColor blueColor];
+    if (bule) {
+                _pingjia1Btn.backgroundColor=[UIColor lightGrayColor];
+            }else{
+                _pingjia2Btn.backgroundColor=[UIColor lightGrayColor];
+                _pingjia1Btn.backgroundColor=[UIColor blueColor];
+            }
+           bule=!bule;
+
+    
 }
 - (IBAction)pingjia2Action:(UIButton *)sender forEvent:(UIEvent *)event {
-   _pingjia2Btn.backgroundColor=[UIColor blueColor];
+    if (++index3%2==0) {
+        _pingjia2Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _pingjia1Btn.backgroundColor=[UIColor lightGrayColor];
+        _pingjia2Btn.backgroundColor=[UIColor blueColor];
+        
+    }
+
+   
 }
 - (IBAction)juli1Action:(UIButton *)sender forEvent:(UIEvent *)event {
-   _juli1Btn.backgroundColor=[UIColor blueColor];
+    if (++index3%2==0) {
+        _juli1Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _juli1Btn.backgroundColor=[UIColor blueColor];
+        _juli2Btn.backgroundColor=[UIColor lightGrayColor];
+        _juli3Btn.backgroundColor=[UIColor lightGrayColor];
+    }
+   
 }
 - (IBAction)juli2Action:(UIButton *)sender forEvent:(UIEvent *)event {
-    _juli2Btn.backgroundColor=[UIColor blueColor];
+    if (++index3%2==0) {
+        _juli2Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _juli1Btn.backgroundColor=[UIColor lightGrayColor];
+        _juli2Btn.backgroundColor=[UIColor blueColor];
+        _juli3Btn.backgroundColor=[UIColor lightGrayColor];
+    }
+    
 }
 - (IBAction)juli3Action:(UIButton *)sender forEvent:(UIEvent *)event {
-    _juli3Btn.backgroundColor=[UIColor blueColor];
+    if (++index3%2==0) {
+        _juli3Btn.backgroundColor=[UIColor lightGrayColor];
+        
+    }else{
+        _juli1Btn.backgroundColor=[UIColor lightGrayColor];
+        _juli2Btn.backgroundColor=[UIColor lightGrayColor];
+        _juli3Btn.backgroundColor=[UIColor blueColor];
+    }
+
 }
 @end
 
