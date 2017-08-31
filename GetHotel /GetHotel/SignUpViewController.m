@@ -87,7 +87,7 @@
         NSLog(@"012");
         [_aiv stopAnimating];
         NSLog(@"responseObject=%@",responseObject);
-        if ([responseObject[@"resultFlag"]integerValue]==8001) {
+        if ([responseObject[@"resultFlag"]integerValue]==1) {
             NSDictionary *result=responseObject[@"result"];
             UserModel *user=[[UserModel alloc]initWhitDictionary:result];
             //将用户获取到的信息打包存储到单例化全局变量
@@ -123,6 +123,6 @@
     else {
         [Utilities popUpAlertViewWithMsg:@"两次输入密码不一致" andTitle:@"提示" onView:self];
     }
-
+    [self readyForEncoding];
 }
 @end

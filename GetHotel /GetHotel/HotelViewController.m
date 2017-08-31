@@ -385,7 +385,7 @@
 //执行网络请求
 - (void)networkRequest{
     NSLog(@"123");
-         NSDictionary *para = @{@"city_name":_cityBtn.titleLabel.text,@"pageNum" : @1,@"pageSize":@10, @"startId" :@1 , @"priceId":@1,@"sortingId" :@1 ,@"inTime" :@"2017-01-05" ,@"outTime" : @"2017-05-06",@"wxlongitude":@"",@"wxlatitude":@""};
+         NSDictionary *para = @{@"city_name":_cityBtn.titleLabel.text,@"pageNum" : @(pageNum),@"pageSize":@10, @"startId" :@1 , @"priceId":@1,@"sortingId" :@1 ,@"inTime" :@"2017-01-05" ,@"outTime" : @"2017-05-06",@"wxlongitude":@"31.568",@"wxlatitude":@"120.299"};
     NSLog(@"456");
         [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             NSLog(@"789");
@@ -456,7 +456,7 @@
     cell.HotelName.text = hotel.hotelName;
     cell.HotelLocation.text = hotel.hotelLocation;
     cell.hotelMoney.text = hotel.hotelMoney;
-    cell.hotelDistance.text = hotel.hotelDistance;
+    cell.hotelDistance.text = [NSString stringWithFormat:@"%ld",(long)hotel.hotelDistance];
     
     //将http请求的字符串转换为NSURL
     NSURL *url = [NSURL URLWithString:hotel.hotelImg];
@@ -509,12 +509,12 @@
 - (IBAction)date1:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 - (IBAction)date1Action:(UIButton *)sender forEvent:(UIEvent *)event {
-    _datePicker.hidden = YES;
-    _toolBar.hidden = YES;
+    _datePicker.hidden = NO;
+    _toolBar.hidden = NO;
 }
 - (IBAction)date2Action:(UIButton *)sender forEvent:(UIEvent *)event {
-    _datePicker.hidden = YES;
-    _toolBar.hidden = YES;
+    _datePicker.hidden = NO;
+    _toolBar.hidden = NO;
 }
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
     //拿到当前datepicker选择的事件
@@ -548,15 +548,15 @@
         
     }
     
-    _datePicker.hidden = YES;
-    _toolBar.hidden = YES;
+    _datePicker.hidden = NO;
+    _toolBar.hidden = NO;
     [self networkRequest];
 
 }
 
 - (IBAction)confirmAction:(UIBarButtonItem *)sender {
-    _toolBar.hidden= YES;
-    _datePicker.hidden=YES;
+    _toolBar.hidden= NO;
+    _datePicker.hidden=NO;
     [self networkRequest];
 }
 @end

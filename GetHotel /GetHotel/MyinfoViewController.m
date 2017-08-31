@@ -41,7 +41,7 @@
         _loginBtn.hidden=YES;
         _nameLabel.hidden=NO;
         UserModel *user=[[StorageMgr singletonStorageMgr]objectForKey:@"UserInfo"];
-        [_headImage sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"用户"]];
+        [_headImage sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"头像"]];
         _nameLabel.text=user.nickName;
         _gradeLabel.hidden=NO;
     }else{
@@ -49,7 +49,7 @@
         _nameLabel.hidden=YES;
         
         _gradeLabel.hidden=YES;
-        _headImage.image=[UIImage imageNamed:@"用户"];
+        _headImage.image=[UIImage imageNamed:@"头像"];
         _nameLabel.text=@"游客";
     
     }

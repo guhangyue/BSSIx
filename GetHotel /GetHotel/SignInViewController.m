@@ -127,7 +127,7 @@
 }
 -(void)readyForEncoding{
     _aiv=[Utilities getCoverOnView:self.view];
-    [RequestAPI requestURL:@"/login/getKey" withParameters:@{@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject)
+    [RequestAPI requestURL:@"/login" withParameters:@{@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject)
         {
             //NSLog(@"responseObject":%@,responseObject);
             if ([responseObject[@"resultFlag"]integerValue]==8001)
@@ -161,7 +161,7 @@
      [RequestAPI requestURL:@"/login" withParameters:@{@"userName":_userPhonetextword.text, @"password":encryptPwd,@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
             [_aiv stopAnimating];
             NSLog(@"responseObject=%@",responseObject);
-    if ([responseObject[@"resultFlag"]integerValue]==8001) {
+    if ([responseObject[@"resultFlag"]integerValue]==1) {
                 NSDictionary *result=responseObject[@"result"];
         UserModel *user=[[UserModel alloc]initWhitDictionary:result];
                 //将用户获取到的信息打包存储到单例化全局变量
