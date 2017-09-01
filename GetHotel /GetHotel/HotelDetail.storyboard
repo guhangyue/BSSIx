@@ -495,16 +495,6 @@
                                     <action selector="chatingAction:forEvent:" destination="3OZ-vW-qXb" eventType="touchUpInside" id="PQ0-Wj-1uO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BU-y1-EY7">
-                                <rect key="frame" x="15" y="40" width="31" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="返回">
-                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="fanhuiAction:forEvent:" destination="3OZ-vW-qXb" eventType="touchUpInside" id="Vsh-Y7-27v"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -518,7 +508,6 @@
                             <constraint firstAttribute="trailing" secondItem="E1T-9S-36a" secondAttribute="trailing" id="HD8-Fv-Lp5"/>
                             <constraint firstItem="C7U-8M-0iE" firstAttribute="width" secondItem="15l-fW-02W" secondAttribute="width" multiplier="1:2" id="Lrm-k7-DIG"/>
                             <constraint firstItem="E1T-9S-36a" firstAttribute="leading" secondItem="15l-fW-02W" secondAttribute="leading" id="NIp-wc-WaL"/>
-                            <constraint firstItem="3BU-y1-EY7" firstAttribute="top" secondItem="E1T-9S-36a" secondAttribute="bottom" constant="-130" id="Spo-cM-2Z9"/>
                             <constraint firstItem="PNE-Dg-lNj" firstAttribute="bottom" secondItem="C7U-8M-0iE" secondAttribute="bottom" id="USY-gY-Ypr"/>
                             <constraint firstAttribute="trailing" secondItem="rhy-1a-dhy" secondAttribute="trailing" id="Vsd-dQ-Upu"/>
                             <constraint firstItem="C7U-8M-0iE" firstAttribute="leading" secondItem="15l-fW-02W" secondAttribute="leading" id="Z48-LX-gOb"/>
@@ -527,7 +516,6 @@
                             <constraint firstAttribute="trailing" secondItem="l1u-J0-bgV" secondAttribute="trailing" id="gK9-xh-NOJ"/>
                             <constraint firstItem="rhy-1a-dhy" firstAttribute="top" secondItem="E1T-9S-36a" secondAttribute="bottom" id="mA7-7P-9e6"/>
                             <constraint firstItem="C7U-8M-0iE" firstAttribute="top" secondItem="l1u-J0-bgV" secondAttribute="bottom" id="qR8-5a-BAW"/>
-                            <constraint firstItem="3BU-y1-EY7" firstAttribute="leading" secondItem="15l-fW-02W" secondAttribute="leading" constant="15" id="sxw-Y5-f6b"/>
                             <constraint firstAttribute="bottom" secondItem="rhy-1a-dhy" secondAttribute="bottom" id="vI6-pN-Zch"/>
                             <constraint firstItem="l1u-J0-bgV" firstAttribute="top" secondItem="hh8-OV-0gn" secondAttribute="bottom" id="ycy-YC-lwm"/>
                         </constraints>
@@ -541,7 +529,6 @@
                         <outlet property="datePicker" destination="l1u-J0-bgV" id="SeD-2o-om6"/>
                         <outlet property="eatingLbl" destination="PAh-Y8-gcp" id="fDe-Vc-ZDj"/>
                         <outlet property="endTimeBtn" destination="knw-S2-a9x" id="978-mi-foc"/>
-                        <outlet property="fanhuiBtn" destination="3BU-y1-EY7" id="9TB-sP-gfx"/>
                         <outlet property="hotelNameLbl" destination="NM1-Gn-ozL" id="SLU-L5-f4D"/>
                         <outlet property="mapBtn" destination="1KI-4F-ZAG" id="h0e-C9-OzQ"/>
                         <outlet property="moneyLbl" destination="vpd-Ze-Fsy" id="62u-sX-D8M"/>

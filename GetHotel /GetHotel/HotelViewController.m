@@ -508,8 +508,8 @@
 //设置每一组中每一行的cell（细胞）被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HotelDetailViewController *detailVC = [Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"1"];
-     [self.navigationController pushViewController:detailVC animated:YES];
+   // HotelDetailViewController *detailVC = [Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"1"];
+    // [self.navigationController pushViewController:detailVC animated:YES];
 
 // if (tableView == _selectTableView) {
 //        [_c setTitle:_sorts[indexPath.row] forState:UIControlStateNormal];
