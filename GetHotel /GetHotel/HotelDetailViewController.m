@@ -169,7 +169,7 @@
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
    // HotelModel *user=[ HotelModel alloc];
-        NSDictionary *para = @{@"id" : @1};
+        NSDictionary *para = @{@"id" :@(_hotelDetail.hotelId)};
    // NSLog(@"%@",user.hotelId);
     [RequestAPI requestURL:@"/findHotelById" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];
@@ -179,7 +179,7 @@
             HotelModel *detail = [[ HotelModel alloc]initWithDictForHotelCell:result];
             _hotelNameLbl.text =detail.hotelName;
             _addressLbl.text = detail.hotelLocation;
-            _moneyLbl.text = [NSString stringWithFormat:@"¥ %ld",(long)detail.hotelMoney];
+            _moneyLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];
             
             [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.hotelImg] placeholderImage:[UIImage imageNamed:@"11"]];
             //_hotelbed.text = detail.type;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HotelModel.h"
 @interface HotelDetailViewController : UIViewController
-
+@property (strong, nonatomic) HotelModel *hotelDetail;
 @end

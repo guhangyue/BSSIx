@@ -510,7 +510,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     HotelDetailViewController *detailVC = [Utilities getStoryboardInstance:@"HotelDetail" byIdentity:@"1"];
      [self.navigationController pushViewController:detailVC animated:YES];
-//    if (tableView == _selectTableView) {
+
+// if (tableView == _selectTableView) {
 //        [_c setTitle:_sorts[indexPath.row] forState:UIControlStateNormal];
 //        switch (indexPath.row) {
 //            case 0:
@@ -545,6 +546,20 @@
 //    
 //    [self.navigationController pushViewController:detailVC animated:YES];
     
+}
+//当某个页面跳转行为将要发生的时候
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"HotelToDetail"]) {
+        //当从列表页到详情页的这个跳转要发生的时候
+        //1、获取要传递到下一页去的数据
+        NSIndexPath *indexPath = [_HotelTabView indexPathForSelectedRow];
+        HotelModel *activity = _arr[indexPath.row];
+        //2、获取下一页这个实例
+        HotelDetailViewController *detailVC = segue.destinationViewController;
+        //3、把数据给下一页预备好的接收容器
+        detailVC.hotelDetail = activity;
+        
+    }
 }
 
 
