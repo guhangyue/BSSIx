@@ -127,24 +127,30 @@
 }
 -(void)readyForEncoding{
     _aiv=[Utilities getCoverOnView:self.view];
-    [RequestAPI requestURL:@"/login" withParameters:@{@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject)
+    NSDictionary *para = @{@"tel":_userPhonetextword.text,@"pwd":_passWordtextword.text};
+    [RequestAPI requestURL:@"/login" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject)
         {
-            //NSLog(@"responseObject":%@,responseObject);
-            if ([responseObject[@"resultFlag"]integerValue]==8001)
+            [_aiv stopAnimating];
+            NSLog(@"responseObject:%@",responseObject);
+            if ([responseObject[@"result"]integerValue]==1)
             {
-                NSDictionary *result=responseObject[@"result"];
-                NSString *modulus = result[@"modulus"];
-                NSString *exponent = result[@"exponent"];
-                //对内容进行MD5加密
-                NSString *md5Str=[_passWordtextword.text getMD5_32BitString];
+                NSDictionary *result=responseObject[@"content"];
+                UserModel *userphone= [[UserModel alloc]initWhitDictionary:result];
+                //将登录获取到用户信息打包存储到单例化全局变量中
+                [[StorageMgr singletonStorageMgr]addKey:@"UserInfo" andValue:userphone];
+                //单独将用户的ID也存储进单例化全局变量来作为用户是否已经登录的判断依据，同时也方便其他所有页面跟快捷的是用用户ID这个参数
+                [[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:userphone.userId];
+                //如果键盘还打开着让它收起
+                [self.view endEditing:YES];
+                //清空密码输入框的内容
+                _passWordtextword.text = @"";
+                //记忆用户名
+                [Utilities setUserDefaults:@"UserTel" content:_userPhonetextword.text];
                 
-                
-                //用模数和指数对MD5密码进行加密过后的密码进行加密   categary
-                NSString *rsaStr=[NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
-                [self signInWithEncryptPwd:rsaStr];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }else{
                 [_aiv stopAnimating];
-                NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+                NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
                 [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
 
             }
@@ -156,36 +162,6 @@
         
 }
     
--(void)signInWithEncryptPwd:(NSString *)encryptPwd
-{
-     [RequestAPI requestURL:@"/login" withParameters:@{@"userName":_userPhonetextword.text, @"password":encryptPwd,@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
-            [_aiv stopAnimating];
-            NSLog(@"responseObject=%@",responseObject);
-    if ([responseObject[@"resultFlag"]integerValue]==1) {
-                NSDictionary *result=responseObject[@"result"];
-        UserModel *user=[[UserModel alloc]initWhitDictionary:result];
-                //将用户获取到的信息打包存储到单例化全局变量
-                [[StorageMgr singletonStorageMgr]addKey:@"MemberInfo" andValue:user];
-                //单独将用户的ID也存储进去单例化全局变量中来作为用户是否已经登录的判断依据，同时也方便其他所有的页面更快捷的使用用户ID这个参数
-                [[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:user.memberId];
-                //如果键盘还开着 就让他收回去
-                [self.view endEditing:YES];
-                //清空密码输入框的内容
-                _passWordtextword.text=@"";
-                //记忆用户名
-                [Utilities setUserDefaults:@"Username" content:_userPhonetextword.text];
-                //用model的方式返回上一页
-                [self dismissViewControllerAnimated:YES completion:nil];
-                
-        }else{
-                NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
-                [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
-        }
-    } failure:^(NSInteger statusCode, NSError *error) {
-            [_aiv stopAnimating];
-            //业务逻辑失败的情况下
-            [Utilities popUpAlertViewWithMsg:@"网络错误，请稍后再试" andTitle:@"提示" onView:self];
-    }];
-}
+
 
 @end
