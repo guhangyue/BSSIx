@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u7E-pS-B24">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u7E-pS-B24">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -271,7 +271,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pW6-e2-To6">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">一、天悦瑜伽国际发展有限公司服务体系是甲方授权建设和管理的全国性服务网络，该服务体系的经营管理制度、规范及甲方的服务项目、商标均由甲方制定和所有，受法律保护，未经甲方授权认可，其他单位、个人均不得使用。 　　二、本协议所指品牌合作的涵义为：在乙方认同并接受甲方经营管理制度、规范的基础上，甲方授权乙方在河南省焦作市以天悦瑜伽(标准)店独家经营。 　　三、甲、乙双方各自独立承担民事责任，相互之间无产权及归属关系。乙方接受甲方授权。
 
@@ -869,7 +869,9 @@
         <scene sceneID="zGW-WD-pef">
             <objects>
                 <navigationController storyboardIdentifier="my" title="我的" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u7E-pS-B24" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的" image="我的-选中" id="JU3-v9-zGe"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NTy-5Z-Cyw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -890,6 +892,7 @@
         <image name="map_adress" width="24" height="22"/>
         <image name="头像" width="100" height="100"/>
         <image name="我的" width="50" height="50"/>
+        <image name="我的-选中" width="22" height="22"/>
         <image name="酒店" width="32" height="25"/>
         <image name="酒店详情小图标" width="32" height="25"/>
     </resources>
