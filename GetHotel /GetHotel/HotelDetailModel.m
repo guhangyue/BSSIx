@@ -17,6 +17,7 @@
         self.image = [Utilities nullAndNilCheck:dict[@"hotel_img"] replaceBy:@"无"];
         self.price=[[Utilities nullAndNilCheck:dict[@"price"] replaceBy:0]integerValue];
         self.type = [Utilities nullAndNilCheck:dict[@"hotel_type"] replaceBy:@"无"];
+        self.hotelID=[[Utilities nullAndNilCheck:dict[@"id"] replaceBy:0]integerValue];
         
     }
     return self;
