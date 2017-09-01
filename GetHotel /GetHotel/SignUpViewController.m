@@ -138,7 +138,7 @@
         NSLog(@"注册：%@", responseObject);
         if ([responseObject[@"result"] integerValue]==1) {
             [Utilities popUpAlertViewWithMsg:@"注册成功" andTitle:@"提示" onView:self];
-            [self performSegueWithIdentifier:@"signInToLogin" sender:self];
+            [self performSegueWithIdentifier:@"signUpToLogin" sender:self];
         }
         else{
             //业务逻辑失败的情况下
