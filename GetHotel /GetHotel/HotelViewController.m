@@ -94,6 +94,7 @@
     [self locationConfig];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
     [self networkRequest];
+    [self naviConfig];
 }
 //每次将要来到这个页面的时候
 //控制广告轮播
@@ -258,14 +259,14 @@
 #pragma mark - naviConfig
 //这个方法专门做导航条的控制
 - (void)naviConfig {
-    //设置导航条标题文字
+   // 设置导航条标题文字
     self.navigationItem.title = @"GetHotel";
     //设置导航条颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
     //设置导航条标题颜色
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否隐藏.
-    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.hidden = YES;
     //设置导航条上按钮的风格颜色
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
